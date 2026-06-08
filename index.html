@@ -423,22 +423,22 @@ nav {
 .collection-card:hover .collection-bg { transform: scale(1.03); }
 
 .collection-card[data-el="fire"] .collection-bg {
-  background-image: url("/images/ui/collection-fire.jpg");
+  background-image: url("images/ui/collection-fire.jpg");
   background-size: cover;
   background-position: center;
 }
 .collection-card[data-el="water"] .collection-bg {
-  background-image: url("/images/ui/collection-water.jpg");
+  background-image: url("images/ui/collection-water.jpg");
   background-size: cover;
   background-position: center;
 }
 .collection-card[data-el="air"] .collection-bg {
-  background-image: url("/images/ui/collection-air.jpg");
+  background-image: url("images/ui/collection-air.jpg");
   background-size: cover;
   background-position: center;
 }
 .collection-card[data-el="earth"] .collection-bg {
-  background-image: url("/images/ui/collection-earth.jpg");
+  background-image: url("images/ui/collection-earth.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -1138,7 +1138,7 @@ footer {
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero-bg {
-    background-image: url("/images/ui/hero-mobile.jpg") !important;
+    background-image: url("images/ui/hero-mobile.jpg") !important;
     background-position: center center;
   }
   nav { padding: 0 20px; }
@@ -1167,7 +1167,7 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo-img"><img src="/images/ui/logo-nav.png" alt="Evolove Jewellery" style="height:44px;width:auto;object-fit:contain;"></a>
+  <a href="#" class="nav-logo-img"><img src="images/ui/logo-nav.png" alt="Evolove Jewellery" style="height:44px;width:auto;object-fit:contain;"></a>
   <ul class="nav-links">
     <li><a href="#shop">Shop</a></li>
     <li><a href="#collections">Collections</a></li>
@@ -1319,7 +1319,7 @@ footer {
 <!-- STORY -->
 <section class="story-section" id="story">
   <div class="story-inner">
-    <div class="story-image-placeholder" style="background:none;padding:0;overflow:hidden;border-radius:2px"><img src="/images/ui/victoria.jpg" alt="Victoria" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+    <div class="story-image-placeholder" style="background:none;padding:0;overflow:hidden;border-radius:2px"><img src="images/ui/victoria.jpg" alt="Victoria" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
     <div class="story-content">
       <p class="section-eyebrow">Our story</p>
       <h2 class="section-title">Beauty as a<br><em>practice</em></h2>
@@ -1358,7 +1358,7 @@ footer {
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-brand-logo"><img src="/images/ui/logo-footer.png" alt="Evolove Jewellery" style="height:48px;width:auto;object-fit:contain;display:block;margin-bottom:16px;"></div>
+      <div class="footer-brand-logo"><img src="images/ui/logo-footer.png" alt="Evolove Jewellery" style="height:48px;width:auto;object-fit:contain;display:block;margin-bottom:16px;"></div>
       <p class="footer-tagline">Jewellery with meaning — handmade from natural stones in Amsterdam.</p>
     </div>
     <div>
@@ -1624,61 +1624,61 @@ let currentElement = null;
 
 // Product images
 const productImages = {
-  0: ["/images/00-playful-heart-earrings/1.JPG", "/images/00-playful-heart-earrings/2.JPG", "/images/00-playful-heart-earrings/3.JPG", "/images/00-playful-heart-earrings/4.JPG"],
-  1: ["/images/01-playful-heart/1.JPG", "/images/01-playful-heart/2.JPG", "/images/01-playful-heart/3.JPG", "/images/01-playful-heart/4.JPG"],
-  2: ["/images/02-ocean-choker/1.JPG", "/images/02-ocean-choker/2.JPG", "/images/02-ocean-choker/3.JPG", "/images/02-ocean-choker/4.JPG"],
-  3: ["/images/03-ocean-earrings/1.JPG", "/images/03-ocean-earrings/2.JPG", "/images/03-ocean-earrings/3.JPG"],
-  4: ["/images/04-ocean-2-0-choker/1.JPG", "/images/04-ocean-2-0-choker/2.JPG", "/images/04-ocean-2-0-choker/3.JPG", "/images/04-ocean-2-0-choker/4.JPG"],
-  5: ["/images/05-ice-earrings/1.JPG", "/images/05-ice-earrings/2.JPG", "/images/05-ice-earrings/3.JPG", "/images/05-ice-earrings/4.JPG"],
-  6: ["/images/06-melting-ice-necklace/1.JPG", "/images/06-melting-ice-necklace/2.JPG", "/images/06-melting-ice-necklace/3.JPG"],
-  7: ["/images/07-cool-confidence-choker/1.JPG", "/images/07-cool-confidence-choker/2.JPG"],
-  8: ["/images/08-11-11-bracelet/1.JPG", "/images/08-11-11-bracelet/2.JPG", "/images/08-11-11-bracelet/3.JPG", "/images/08-11-11-bracelet/4.JPG", "/images/08-11-11-bracelet/5.JPG"],
-  9: ["/images/09-soul-wings-choker/1.JPG", "/images/09-soul-wings-choker/2.JPG", "/images/09-soul-wings-choker/3.JPG"],
-  10: ["/images/10-soul-wings-bracelet/1.JPG", "/images/10-soul-wings-bracelet/2.JPG", "/images/10-soul-wings-bracelet/3.JPG", "/images/10-soul-wings-bracelet/4.JPG"],
-  11: ["/images/11-gentle-balance-choker/1.JPG", "/images/11-gentle-balance-choker/2.JPG", "/images/11-gentle-balance-choker/3.JPG"],
-  12: ["/images/12-gentle-balance-earrings/1.JPG", "/images/12-gentle-balance-earrings/2.JPG", "/images/12-gentle-balance-earrings/3.JPG", "/images/12-gentle-balance-earrings/4.JPG"],
-  13: ["/images/13-soft-light-choker/1.JPG", "/images/13-soft-light-choker/2.JPG", "/images/13-soft-light-choker/3.JPG"],
-  14: ["/images/14-soft-light-earrings/1.JPG", "/images/14-soft-light-earrings/2.JPG", "/images/14-soft-light-earrings/3.JPG"],
-  15: ["/images/15-light-as-a-feather-necklace/1.JPG", "/images/15-light-as-a-feather-necklace/2.JPG", "/images/15-light-as-a-feather-necklace/3.JPG"],
-  16: ["/images/16-light-as-a-feather-earrings/1.JPG", "/images/16-light-as-a-feather-earrings/2.JPG", "/images/16-light-as-a-feather-earrings/3.JPG", "/images/16-light-as-a-feather-earrings/4.JPG"],
-  17: ["/images/17-moon-garden-choker/1.JPG", "/images/17-moon-garden-choker/2.JPG", "/images/17-moon-garden-choker/3.JPG", "/images/17-moon-garden-choker/4.JPG"],
-  18: ["/images/18-moon-garden-earrings/1.JPG", "/images/18-moon-garden-earrings/2.JPG", "/images/18-moon-garden-earrings/3.JPG"],
-  19: ["/images/19-golden-hour-necklace/1.JPG", "/images/19-golden-hour-necklace/2.JPG", "/images/19-golden-hour-necklace/3.JPG", "/images/19-golden-hour-necklace/4.JPG"],
-  20: ["/images/20-golden-hour-earrings/1.JPG", "/images/20-golden-hour-earrings/2.JPG", "/images/20-golden-hour-earrings/3.JPG"],
-  21: ["/images/21-labradorite-dreams-bracelet/1.JPG", "/images/21-labradorite-dreams-bracelet/2.JPG", "/images/21-labradorite-dreams-bracelet/3.JPG"],
-  22: ["/images/22-labradorite-dreams-choker/1.JPG", "/images/22-labradorite-dreams-choker/2.JPG", "/images/22-labradorite-dreams-choker/3.JPG"],
-  23: ["/images/23-i-am-powerful-choker/1.JPG", "/images/23-i-am-powerful-choker/2.JPG", "/images/23-i-am-powerful-choker/3.JPG", "/images/23-i-am-powerful-choker/4.JPG"],
-  24: ["/images/24-i-am-powerful-necklace/1.JPG", "/images/24-i-am-powerful-necklace/2.JPG", "/images/24-i-am-powerful-necklace/3.JPG", "/images/24-i-am-powerful-necklace/4.JPG"],
-  25: ["/images/25-i-am-powerful-earrings/1.JPG", "/images/25-i-am-powerful-earrings/2.JPG", "/images/25-i-am-powerful-earrings/3.JPG", "/images/25-i-am-powerful-earrings/4.JPG"],
-  26: ["/images/26-sky-of-love-bracelet/1.JPG", "/images/26-sky-of-love-bracelet/2.JPG"],
-  27: ["/images/32-i-am-seen-choker/1.JPG", "/images/32-i-am-seen-choker/2.JPG", "/images/32-i-am-seen-choker/3.JPG"],
-  28: ["/images/28-i-am-seen-necklace/1.JPG", "/images/28-i-am-seen-necklace/2.JPG", "/images/28-i-am-seen-necklace/3.JPG"],
-  29: ["/images/29-i-am-seen-earrings/1.JPG", "/images/29-i-am-seen-earrings/2.JPG", "/images/29-i-am-seen-earrings/3.JPG", "/images/29-i-am-seen-earrings/4.JPG"],
-  33: ["/images/26-solar-flame-earrings/1.JPG", "/images/26-solar-flame-earrings/2.JPG", "/images/26-solar-flame-earrings/3.JPG"],
-  34: ["/images/27-solar-flame-necklace/1.JPG", "/images/27-solar-flame-necklace/2.JPG", "/images/27-solar-flame-necklace/3.JPG"],
-  35: ["/images/28-hot-chocolate-necklace/1.JPG", "/images/28-hot-chocolate-necklace/2.JPG", "/images/28-hot-chocolate-necklace/3.JPG"],
-  36: ["/images/29-hot-chocolate-earrings/1.JPG", "/images/29-hot-chocolate-earrings/2.JPG", "/images/29-hot-chocolate-earrings/3.JPG", "/images/29-hot-chocolate-earrings/4.JPG"],
-  37: ["/images/30-strawberry-field-choker/1.JPG", "/images/30-strawberry-field-choker/2.JPG", "/images/30-strawberry-field-choker/3.JPG"],
-  38: ["/images/31-strawberry-field-bracelet/1.JPG", "/images/31-strawberry-field-bracelet/2.JPG", "/images/31-strawberry-field-bracelet/3.JPG", "/images/31-strawberry-field-bracelet/4.JPG"],
-  30: ["/images/33-i-am-grounded-choker/1.JPG", "/images/33-i-am-grounded-choker/2.JPG", "/images/33-i-am-grounded-choker/3.JPG"],
-  31: ["/images/31-i-am-grounded-necklace/1.JPG", "/images/31-i-am-grounded-necklace/2.JPG", "/images/31-i-am-grounded-necklace/3.JPG"],
-  32: ["/images/32-i-am-grounded-earrings/1.JPG", "/images/32-i-am-grounded-earrings/2.JPG", "/images/32-i-am-grounded-earrings/3.JPG", "/images/32-i-am-grounded-earrings/4.JPG"],
-  39: ["/images/39-i-am-limitless-earrings/1.JPG", "/images/39-i-am-limitless-earrings/2.JPG", "/images/39-i-am-limitless-earrings/3.JPG", "/images/39-i-am-limitless-earrings/4.JPG"],
-  40: ["/images/40-i-am-limitless-choker/1.JPG", "/images/40-i-am-limitless-choker/2.JPG", "/images/40-i-am-limitless-choker/3.JPG"],
-  53: ["/images/40b-i-am-limitless-choker-2/1.JPG", "/images/40b-i-am-limitless-choker-2/2.JPG", "/images/40b-i-am-limitless-choker-2/3.JPG", "/images/40b-i-am-limitless-choker-2/4.JPG"],
-  41: ["/images/41-i-am-limitless-necklace/1.JPG", "/images/41-i-am-limitless-necklace/2.JPG", "/images/41-i-am-limitless-necklace/3.JPG", "/images/41-i-am-limitless-necklace/4.JPG", "/images/41-i-am-limitless-necklace/5.JPG"],
-  43: ["/images/43-inner-harmony-bracelet/1.JPG", "/images/43-inner-harmony-bracelet/2.JPG"],
-  54: ["/images/54-candy-necklace-choker/1.jpeg", "/images/54-candy-necklace-choker/2.JPG", "/images/54-candy-necklace-choker/3.JPG", "/images/54-candy-necklace-choker/4.JPG"],
-  55: ["/images/55-sugar-drops-earrings/1.JPG", "/images/55-sugar-drops-earrings/2.jpeg", "/images/55-sugar-drops-earrings/3.JPG"],
-  56: ["/images/56-dolce-vita-choker/1.JPG", "/images/56-dolce-vita-choker/2.JPG", "/images/56-dolce-vita-choker/3.JPG"],
-  57: ["/images/57-dolce-vita-bracelet/1.JPG", "/images/57-dolce-vita-bracelet/2.JPG", "/images/57-dolce-vita-bracelet/3.JPG"],
-  58: ["/images/58-dolce-vita-earrings/1.JPG", "/images/58-dolce-vita-earrings/2.JPG", "/images/58-dolce-vita-earrings/3.JPG"],
-  59: ["/images/59-in-bloom-necklace/1.JPG", "/images/59-in-bloom-necklace/2.JPG", "/images/59-in-bloom-necklace/3.JPG", "/images/59-in-bloom-necklace/4.JPG"],
-  60: ["/images/60-in-bloom-ring/1.JPG", "/images/60-in-bloom-ring/2.JPG", "/images/60-in-bloom-ring/3.JPG", "/images/60-in-bloom-ring/4.JPG"],
-  61: ["/images/61-in-bloom-earrings/1.JPG", "/images/61-in-bloom-earrings/2.JPG", "/images/61-in-bloom-earrings/3.JPG", "/images/61-in-bloom-earrings/4.JPG"],
-  46: ["/images/46-i-am-steady-earrings/1.JPG", "/images/46-i-am-steady-earrings/2.JPG", "/images/46-i-am-steady-earrings/3.JPG", "/images/46-i-am-steady-earrings/4.JPG"],
-  47: ["/images/47-i-am-steady-necklace/1.JPG", "/images/47-i-am-steady-necklace/2.JPG", "/images/47-i-am-steady-necklace/3.JPG", "/images/47-i-am-steady-necklace/4.JPG"],
-  48: ["/images/48-i-am-steady-choker/1.JPG", "/images/48-i-am-steady-choker/2.JPG", "/images/48-i-am-steady-choker/3.JPG", "/images/48-i-am-steady-choker/4.JPG"],
+  0: ["images/00-playful-heart-earrings/1.JPG", "images/00-playful-heart-earrings/2.JPG", "images/00-playful-heart-earrings/3.JPG", "images/00-playful-heart-earrings/4.JPG"],
+  1: ["images/01-playful-heart/1.JPG", "images/01-playful-heart/2.JPG", "images/01-playful-heart/3.JPG", "images/01-playful-heart/4.JPG"],
+  2: ["images/02-ocean-choker/1.JPG", "images/02-ocean-choker/2.JPG", "images/02-ocean-choker/3.JPG", "images/02-ocean-choker/4.JPG"],
+  3: ["images/03-ocean-earrings/1.JPG", "images/03-ocean-earrings/2.JPG", "images/03-ocean-earrings/3.JPG"],
+  4: ["images/04-ocean-2-0-choker/1.JPG", "images/04-ocean-2-0-choker/2.JPG", "images/04-ocean-2-0-choker/3.JPG", "images/04-ocean-2-0-choker/4.JPG"],
+  5: ["images/05-ice-earrings/1.JPG", "images/05-ice-earrings/2.JPG", "images/05-ice-earrings/3.JPG", "images/05-ice-earrings/4.JPG"],
+  6: ["images/06-melting-ice-necklace/1.JPG", "images/06-melting-ice-necklace/2.JPG", "images/06-melting-ice-necklace/3.JPG"],
+  7: ["images/07-cool-confidence-choker/1.JPG", "images/07-cool-confidence-choker/2.JPG"],
+  8: ["images/08-11-11-bracelet/1.JPG", "images/08-11-11-bracelet/2.JPG", "images/08-11-11-bracelet/3.JPG", "images/08-11-11-bracelet/4.JPG", "images/08-11-11-bracelet/5.JPG"],
+  9: ["images/09-soul-wings-choker/1.JPG", "images/09-soul-wings-choker/2.JPG", "images/09-soul-wings-choker/3.JPG"],
+  10: ["images/10-soul-wings-bracelet/1.JPG", "images/10-soul-wings-bracelet/2.JPG", "images/10-soul-wings-bracelet/3.JPG", "images/10-soul-wings-bracelet/4.JPG"],
+  11: ["images/11-gentle-balance-choker/1.JPG", "images/11-gentle-balance-choker/2.JPG", "images/11-gentle-balance-choker/3.JPG"],
+  12: ["images/12-gentle-balance-earrings/1.JPG", "images/12-gentle-balance-earrings/2.JPG", "images/12-gentle-balance-earrings/3.JPG", "images/12-gentle-balance-earrings/4.JPG"],
+  13: ["images/13-soft-light-choker/1.JPG", "images/13-soft-light-choker/2.JPG", "images/13-soft-light-choker/3.JPG"],
+  14: ["images/14-soft-light-earrings/1.JPG", "images/14-soft-light-earrings/2.JPG", "images/14-soft-light-earrings/3.JPG"],
+  15: ["images/15-light-as-a-feather-necklace/1.JPG", "images/15-light-as-a-feather-necklace/2.JPG", "images/15-light-as-a-feather-necklace/3.JPG"],
+  16: ["images/16-light-as-a-feather-earrings/1.JPG", "images/16-light-as-a-feather-earrings/2.JPG", "images/16-light-as-a-feather-earrings/3.JPG", "images/16-light-as-a-feather-earrings/4.JPG"],
+  17: ["images/17-moon-garden-choker/1.JPG", "images/17-moon-garden-choker/2.JPG", "images/17-moon-garden-choker/3.JPG", "images/17-moon-garden-choker/4.JPG"],
+  18: ["images/18-moon-garden-earrings/1.JPG", "images/18-moon-garden-earrings/2.JPG", "images/18-moon-garden-earrings/3.JPG"],
+  19: ["images/19-golden-hour-necklace/1.JPG", "images/19-golden-hour-necklace/2.JPG", "images/19-golden-hour-necklace/3.JPG", "images/19-golden-hour-necklace/4.JPG"],
+  20: ["images/20-golden-hour-earrings/1.JPG", "images/20-golden-hour-earrings/2.JPG", "images/20-golden-hour-earrings/3.JPG"],
+  21: ["images/21-labradorite-dreams-bracelet/1.JPG", "images/21-labradorite-dreams-bracelet/2.JPG", "images/21-labradorite-dreams-bracelet/3.JPG"],
+  22: ["images/22-labradorite-dreams-choker/1.JPG", "images/22-labradorite-dreams-choker/2.JPG", "images/22-labradorite-dreams-choker/3.JPG"],
+  23: ["images/23-i-am-powerful-choker/1.JPG", "images/23-i-am-powerful-choker/2.JPG", "images/23-i-am-powerful-choker/3.JPG", "images/23-i-am-powerful-choker/4.JPG"],
+  24: ["images/24-i-am-powerful-necklace/1.JPG", "images/24-i-am-powerful-necklace/2.JPG", "images/24-i-am-powerful-necklace/3.JPG", "images/24-i-am-powerful-necklace/4.JPG"],
+  25: ["images/25-i-am-powerful-earrings/1.JPG", "images/25-i-am-powerful-earrings/2.JPG", "images/25-i-am-powerful-earrings/3.JPG", "images/25-i-am-powerful-earrings/4.JPG"],
+  26: ["images/26-sky-of-love-bracelet/1.JPG", "images/26-sky-of-love-bracelet/2.JPG"],
+  27: ["images/32-i-am-seen-choker/1.JPG", "images/32-i-am-seen-choker/2.JPG", "images/32-i-am-seen-choker/3.JPG"],
+  28: ["images/28-i-am-seen-necklace/1.JPG", "images/28-i-am-seen-necklace/2.JPG", "images/28-i-am-seen-necklace/3.JPG"],
+  29: ["images/29-i-am-seen-earrings/1.JPG", "images/29-i-am-seen-earrings/2.JPG", "images/29-i-am-seen-earrings/3.JPG", "images/29-i-am-seen-earrings/4.JPG"],
+  33: ["images/26-solar-flame-earrings/1.JPG", "images/26-solar-flame-earrings/2.JPG", "images/26-solar-flame-earrings/3.JPG"],
+  34: ["images/27-solar-flame-necklace/1.JPG", "images/27-solar-flame-necklace/2.JPG", "images/27-solar-flame-necklace/3.JPG"],
+  35: ["images/28-hot-chocolate-necklace/1.JPG", "images/28-hot-chocolate-necklace/2.JPG", "images/28-hot-chocolate-necklace/3.JPG"],
+  36: ["images/29-hot-chocolate-earrings/1.JPG", "images/29-hot-chocolate-earrings/2.JPG", "images/29-hot-chocolate-earrings/3.JPG", "images/29-hot-chocolate-earrings/4.JPG"],
+  37: ["images/30-strawberry-field-choker/1.JPG", "images/30-strawberry-field-choker/2.JPG", "images/30-strawberry-field-choker/3.JPG"],
+  38: ["images/31-strawberry-field-bracelet/1.JPG", "images/31-strawberry-field-bracelet/2.JPG", "images/31-strawberry-field-bracelet/3.JPG", "images/31-strawberry-field-bracelet/4.JPG"],
+  30: ["images/33-i-am-grounded-choker/1.JPG", "images/33-i-am-grounded-choker/2.JPG", "images/33-i-am-grounded-choker/3.JPG"],
+  31: ["images/31-i-am-grounded-necklace/1.JPG", "images/31-i-am-grounded-necklace/2.JPG", "images/31-i-am-grounded-necklace/3.JPG"],
+  32: ["images/32-i-am-grounded-earrings/1.JPG", "images/32-i-am-grounded-earrings/2.JPG", "images/32-i-am-grounded-earrings/3.JPG", "images/32-i-am-grounded-earrings/4.JPG"],
+  39: ["images/39-i-am-limitless-earrings/1.JPG", "images/39-i-am-limitless-earrings/2.JPG", "images/39-i-am-limitless-earrings/3.JPG", "images/39-i-am-limitless-earrings/4.JPG"],
+  40: ["images/40-i-am-limitless-choker/1.JPG", "images/40-i-am-limitless-choker/2.JPG", "images/40-i-am-limitless-choker/3.JPG"],
+  53: ["images/40b-i-am-limitless-choker-2/1.JPG", "images/40b-i-am-limitless-choker-2/2.JPG", "images/40b-i-am-limitless-choker-2/3.JPG", "images/40b-i-am-limitless-choker-2/4.JPG"],
+  41: ["images/41-i-am-limitless-necklace/1.JPG", "images/41-i-am-limitless-necklace/2.JPG", "images/41-i-am-limitless-necklace/3.JPG", "images/41-i-am-limitless-necklace/4.JPG", "images/41-i-am-limitless-necklace/5.JPG"],
+  43: ["images/43-inner-harmony-bracelet/1.JPG", "images/43-inner-harmony-bracelet/2.JPG"],
+  54: ["images/54-candy-necklace-choker/1.jpeg", "images/54-candy-necklace-choker/2.JPG", "images/54-candy-necklace-choker/3.JPG", "images/54-candy-necklace-choker/4.JPG"],
+  55: ["images/55-sugar-drops-earrings/1.JPG", "images/55-sugar-drops-earrings/2.jpeg", "images/55-sugar-drops-earrings/3.JPG"],
+  56: ["images/56-dolce-vita-choker/1.JPG", "images/56-dolce-vita-choker/2.JPG", "images/56-dolce-vita-choker/3.JPG"],
+  57: ["images/57-dolce-vita-bracelet/1.JPG", "images/57-dolce-vita-bracelet/2.JPG", "images/57-dolce-vita-bracelet/3.JPG"],
+  58: ["images/58-dolce-vita-earrings/1.JPG", "images/58-dolce-vita-earrings/2.JPG", "images/58-dolce-vita-earrings/3.JPG"],
+  59: ["images/59-in-bloom-necklace/1.JPG", "images/59-in-bloom-necklace/2.JPG", "images/59-in-bloom-necklace/3.JPG", "images/59-in-bloom-necklace/4.JPG"],
+  60: ["images/60-in-bloom-ring/1.JPG", "images/60-in-bloom-ring/2.JPG", "images/60-in-bloom-ring/3.JPG", "images/60-in-bloom-ring/4.JPG"],
+  61: ["images/61-in-bloom-earrings/1.JPG", "images/61-in-bloom-earrings/2.JPG", "images/61-in-bloom-earrings/3.JPG", "images/61-in-bloom-earrings/4.JPG"],
+  46: ["images/46-i-am-steady-earrings/1.JPG", "images/46-i-am-steady-earrings/2.JPG", "images/46-i-am-steady-earrings/3.JPG", "images/46-i-am-steady-earrings/4.JPG"],
+  47: ["images/47-i-am-steady-necklace/1.JPG", "images/47-i-am-steady-necklace/2.JPG", "images/47-i-am-steady-necklace/3.JPG", "images/47-i-am-steady-necklace/4.JPG"],
+  48: ["images/48-i-am-steady-choker/1.JPG", "images/48-i-am-steady-choker/2.JPG", "images/48-i-am-steady-choker/3.JPG", "images/48-i-am-steady-choker/4.JPG"],
 };
 
 // ── RENDER PRODUCTS ──
