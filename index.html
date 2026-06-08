@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolove Jewellery — Jewellery with Meaning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F7F3EE;
+  --cream-dark: #EDE8E0;
+  --warm-white: #FDFAF7;
+  --gold: #B8975A;
+  --gold-light: #D4B483;
+  --gold-dark: #8A6E3A;
+  --charcoal: #2C2B28;
+  --muted: #7A786F;
+  --border: rgba(44,43,40,0.12);
+  --border-strong: rgba(44,43,40,0.25);
+  --fire: #C4502A;
+  --water: #3A6E8F;
+  --air: #7A8FA6;
+  --earth: #6B5E42;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Jost', sans-serif;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--charcoal);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold-light); border-radius: 2px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(247,243,238,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+  padding: 0 40px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--gold); font-style: italic; }
+.nav-logo-img { display:flex; align-items:center; text-decoration:none; height:100%; }
+
+.nav-links {
+  display: flex; gap: 36px; list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--charcoal); }
+
+.nav-cart {
+  position: relative;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--charcoal);
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px;
+  border: 0.5px solid var(--border-strong);
+  border-radius: 2px;
+  transition: all var(--transition);
+}
+.nav-cart:hover { background: var(--charcoal); color: var(--cream); }
+.cart-count {
+  background: var(--gold);
+  color: white;
+  font-size: 10px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 500;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* hero bg image */
+.hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  animation: heroZoom 8s ease-out forwards;
+  transform: scale(1.04);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(20,18,15,0.3) 0%, rgba(20,18,15,0.5) 60%, rgba(20,18,15,0.7) 100%);
+}
+
+@media (min-width: 901px) {
+  .hero-overlay {
+    background: linear-gradient(to bottom, rgba(20,18,15,0.1) 0%, rgba(20,18,15,0.3) 60%, rgba(20,18,15,0.5) 100%);
+  }
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 120px 40px 80px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 1s 0.2s forwards;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: white;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 1s 0.4s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 1s 0.6s forwards;
+}
+
+.hero-desc { display: none; }
+
+.hero-actions {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1s 1s forwards;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--charcoal);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none; cursor: pointer;
+  border-radius: 2px;
+  transition: all var(--transition);
+}
+.btn-primary:hover { background: var(--gold-dark); }
+
+.btn-outline {
+  display: inline-block;
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0.5px solid var(--border-strong);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all var(--transition);
+}
+.btn-outline:hover { border-color: var(--charcoal); background: var(--charcoal); color: var(--cream); }
+
+.btn-outline-light {
+  display: inline-block;
+  padding: 14px 36px;
+  background: transparent;
+  color: white;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0.5px solid rgba(255,255,255,0.5);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all var(--transition);
+}
+.btn-outline-light:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 0; right: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0;
+  animation: fadeUp 1s 1.4s forwards;
+  z-index: 2;
+}
+.hero-scroll span { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.scroll-line {
+  width: 0.5px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ── ELEMENTS STRIP ── */
+.elements-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 0.5px solid var(--border);
+}
+
+.element-card {
+  padding: 48px 32px;
+  border-right: 0.5px solid var(--border);
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative; overflow: hidden;
+}
+.element-card:last-child { border-right: none; }
+.element-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+.element-card:hover::before { transform: scaleX(1); }
+.element-card:hover { background: var(--warm-white); }
+
+.element-card[data-el="fire"]::before { background: var(--fire); }
+.element-card[data-el="water"]::before { background: var(--water); }
+.element-card[data-el="air"]::before { background: var(--air); }
+.element-card[data-el="earth"]::before { background: var(--earth); }
+
+.element-symbol {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 12px;
+  display: block;
+}
+.element-card[data-el="fire"] .element-symbol { color: var(--fire); }
+.element-card[data-el="water"] .element-symbol { color: var(--water); }
+.element-card[data-el="air"] .element-symbol { color: var(--air); }
+.element-card[data-el="earth"] .element-symbol { color: var(--earth); }
+
+.element-name {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--charcoal);
+  margin-bottom: 8px;
+}
+.element-desc { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+/* ── SECTION HEADERS ── */
+.section { padding: 80px 40px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+
+.section-header { margin-bottom: 56px; }
+.section-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--charcoal);
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* ── FILTERS ── */
+.filters {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.filter-btn {
+  padding: 8px 20px;
+  background: none;
+  border: 0.5px solid var(--border);
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer; border-radius: 2px;
+  transition: all var(--transition);
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--charcoal); color: var(--cream);
+  border-color: var(--charcoal);
+}
+
+/* ── PRODUCT GRID ── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.product-card {
+  background: var(--warm-white);
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex; flex-direction: column;
+}
+.product-card:hover { background: white; }
+
+.product-img {
+  width: 100%; aspect-ratio: 4/5;
+  background: var(--cream-dark);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+
+.product-img-placeholder {
+  font-family: var(--font-display);
+  font-size: 48px; font-style: italic; font-weight: 300;
+  opacity: 0.15;
+  color: var(--charcoal);
+}
+
+.product-element-dot {
+  position: absolute; top: 16px; right: 16px;
+  width: 8px; height: 8px; border-radius: 50%;
+}
+.dot-fire { background: var(--fire); }
+.dot-water { background: var(--water); }
+.dot-air { background: var(--air); }
+.dot-earth { background: var(--earth); }
+
+
+
+.product-info { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.product-name {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 400;
+  color: var(--charcoal); margin-bottom: 2px;
+}
+.product-type {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+}
+.product-state {
+  font-size: 12px; color: var(--muted); font-style: italic;
+  font-family: var(--font-display); margin-bottom: 12px;
+  line-height: 1.4; flex: 1;
+}
+.product-price {
+  font-size: 16px; font-weight: 500; color: var(--charcoal);
+  margin-top: auto;
+}
+
+/* ── COLLECTIONS SECTION ── */
+.collections-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+}
+.collection-card {
+  position: relative; aspect-ratio: 4/3;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 36px;
+  overflow: hidden; cursor: pointer;
+}
+.collection-bg {
+  position: absolute; inset: 0;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.collection-card:hover .collection-bg { transform: scale(1.03); }
+
+.collection-card[data-el="fire"] .collection-bg {
+  background-image: url("/images/ui/collection-fire.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.collection-card[data-el="water"] .collection-bg {
+  background-image: url("/images/ui/collection-water.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.collection-card[data-el="air"] .collection-bg {
+  background-image: url("/images/ui/collection-air.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.collection-card[data-el="earth"] .collection-bg {
+  background-image: url("/images/ui/collection-earth.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.collection-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+}
+.collection-content { position: relative; z-index: 1; }
+.collection-el-name {
+  font-family: var(--font-display);
+  font-size: 52px; font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.9); line-height: 1;
+  margin-bottom: 8px;
+}
+.collection-tagline {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+}
+.collection-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  border-bottom: 0.5px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  transition: all var(--transition);
+}
+.collection-link:hover { color: white; border-color: white; }
+
+/* ── MADE FOR YOU ── */
+.made-for-you {
+  background: var(--charcoal);
+  padding: 100px 40px;
+}
+.made-inner {
+  max-width: 800px; margin: 0 auto; text-align: center;
+}
+.made-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+}
+.made-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300; color: var(--cream);
+  line-height: 1.1; margin-bottom: 24px;
+}
+.made-title em { font-style: italic; color: var(--gold-light); }
+.made-desc {
+  font-size: 15px; font-weight: 300; color: rgba(247,243,238,0.65);
+  max-width: 520px; margin: 0 auto 48px; line-height: 1.8;
+}
+.made-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 40px; margin-bottom: 56px; text-align: left;
+}
+.made-step-num {
+  font-family: var(--font-display);
+  font-size: 48px; font-weight: 300; font-style: italic;
+  color: var(--gold); opacity: 0.5; margin-bottom: 12px;
+  display: block;
+}
+.made-step-title {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--cream); margin-bottom: 8px;
+}
+.made-step-desc {
+  font-size: 13px; font-weight: 300;
+  color: rgba(247,243,238,0.5); line-height: 1.6;
+}
+
+/* ── STORY ── */
+.story-section {
+  background: var(--warm-white);
+  padding: 100px 40px;
+}
+.story-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.story-image-placeholder {
+  aspect-ratio: 3/4;
+  background: var(--cream-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 80px;
+  font-style: italic; font-weight: 300;
+  color: rgba(44,43,40,0.1);
+  border-radius: 2px;
+}
+.story-content .section-eyebrow { margin-bottom: 16px; }
+.story-content .section-title { margin-bottom: 28px; }
+.story-text {
+  font-size: 15px; font-weight: 300; color: var(--muted);
+  line-height: 1.9; margin-bottom: 20px;
+}
+.story-signature {
+  font-family: var(--font-display);
+  font-size: 28px; font-style: italic; font-weight: 300;
+  color: var(--gold); margin-top: 36px;
+}
+
+/* ── CART SIDEBAR ── */
+.cart-overlay {
+  position: fixed; inset: 0; background: rgba(44,43,40,0.4);
+  z-index: 200; opacity: 0; pointer-events: none;
+  transition: opacity var(--transition);
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+
+.cart-sidebar {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 440px; background: var(--warm-white);
+  z-index: 201;
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 0.5px solid var(--border);
+}
+.cart-sidebar.open { transform: translateX(0); }
+
+.cart-header {
+  padding: 28px 32px;
+  border-bottom: 0.5px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.cart-title {
+  font-family: var(--font-display); font-size: 28px;
+  font-weight: 400; color: var(--charcoal);
+}
+.cart-close {
+  background: none; border: none; cursor: pointer;
+  font-size: 24px; color: var(--muted); line-height: 1;
+  padding: 4px; transition: color var(--transition);
+}
+.cart-close:hover { color: var(--charcoal); }
+
+.cart-items { flex: 1; overflow-y: auto; padding: 24px 32px; }
+.cart-empty {
+  text-align: center; padding: 60px 0;
+  font-family: var(--font-display); font-size: 18px;
+  font-style: italic; font-weight: 300; color: var(--muted);
+}
+
+.cart-item {
+  display: flex; gap: 16px; padding: 20px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.cart-item-img {
+  width: 72px; height: 90px;
+  background: var(--cream-dark); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-style: italic;
+  font-size: 20px; color: rgba(44,43,40,0.15);
+}
+.cart-item-info { flex: 1; }
+.cart-item-name {
+  font-family: var(--font-display); font-size: 18px;
+  font-weight: 400; color: var(--charcoal); margin-bottom: 2px;
+}
+.cart-item-type {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+}
+.cart-item-controls {
+  display: flex; align-items: center; gap: 12px;
+}
+.qty-btn {
+  width: 28px; height: 28px;
+  background: none; border: 0.5px solid var(--border-strong);
+  cursor: pointer; font-size: 16px; color: var(--charcoal);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 2px; transition: all var(--transition);
+}
+.qty-btn:hover { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+.qty-display { font-size: 14px; font-weight: 500; min-width: 20px; text-align: center; }
+.cart-item-remove {
+  background: none; border: none; cursor: pointer;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin-left: auto;
+  transition: color var(--transition);
+}
+.cart-item-remove:hover { color: var(--fire); }
+.cart-item-price {
+  font-size: 16px; font-weight: 500; color: var(--charcoal);
+  white-space: nowrap;
+}
+
+.cart-footer { padding: 24px 32px; border-top: 0.5px solid var(--border); }
+.cart-total-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 24px;
+}
+.cart-total-label {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.cart-total-amount {
+  font-family: var(--font-display); font-size: 32px; font-weight: 400; color: var(--charcoal);
+}
+.btn-checkout {
+  width: 100%; padding: 16px;
+  background: var(--charcoal); color: var(--cream);
+  font-family: var(--font-body); font-size: 12px;
+  font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  border: none; cursor: pointer; border-radius: 2px;
+  transition: all var(--transition);
+}
+.btn-checkout:hover { background: var(--gold-dark); }
+.cart-note {
+  margin-top: 12px; text-align: center;
+  font-size: 12px; color: var(--muted); font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* ── ORDER MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(44,43,40,0.6);
+  z-index: 300; opacity: 0; pointer-events: none;
+  transition: opacity var(--transition);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: var(--warm-white);
+  width: 100%; max-width: 560px;
+  max-height: 90vh; overflow-y: auto;
+  border-radius: 2px;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+
+.modal-header {
+  padding: 32px 36px 24px;
+  border-bottom: 0.5px solid var(--border);
+}
+.modal-title {
+  font-family: var(--font-display); font-size: 32px;
+  font-weight: 400; color: var(--charcoal); margin-bottom: 6px;
+}
+.modal-subtitle { font-size: 13px; color: var(--muted); font-weight: 300; }
+
+.modal-body { padding: 32px 36px; }
+
+.order-summary {
+  background: var(--cream);
+  padding: 20px; margin-bottom: 28px; border-radius: 2px;
+}
+.order-summary-title {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+}
+.order-summary-item {
+  display: flex; justify-content: space-between;
+  font-size: 14px; padding: 4px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.order-summary-item:last-child { border: none; }
+.order-summary-total {
+  display: flex; justify-content: space-between;
+  font-weight: 500; font-size: 15px; margin-top: 12px;
+  padding-top: 12px; border-top: 0.5px solid var(--border-strong);
+}
+
+.form-group { margin-bottom: 20px; }
+.form-label {
+  display: block; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.form-input {
+  width: 100%; padding: 12px 16px;
+  background: var(--cream); border: 0.5px solid var(--border);
+  font-family: var(--font-body); font-size: 14px;
+  color: var(--charcoal); border-radius: 2px;
+  outline: none; transition: border-color var(--transition);
+}
+.form-input:focus { border-color: var(--gold); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.form-note {
+  background: rgba(184,151,90,0.08);
+  border-left: 2px solid var(--gold);
+  padding: 14px 16px; margin-bottom: 24px;
+  font-size: 13px; color: var(--muted); line-height: 1.6;
+}
+
+.btn-confirm {
+  width: 100%; padding: 16px;
+  background: var(--charcoal); color: var(--cream);
+  font-family: var(--font-body); font-size: 12px;
+  font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  border: none; cursor: pointer; border-radius: 2px;
+  transition: all var(--transition); margin-bottom: 12px;
+}
+.btn-confirm:hover { background: var(--gold-dark); }
+.modal-cancel {
+  width: 100%; text-align: center;
+  font-size: 12px; color: var(--muted); cursor: pointer;
+  background: none; border: none; padding: 8px;
+  transition: color var(--transition);
+}
+.modal-cancel:hover { color: var(--charcoal); }
+
+/* ── SUCCESS MODAL ── */
+.success-modal {
+  text-align: center; padding: 60px 36px;
+}
+.success-icon {
+  font-family: var(--font-display); font-size: 64px;
+  font-style: italic; font-weight: 300; color: var(--gold);
+  margin-bottom: 24px; display: block;
+}
+.success-title {
+  font-family: var(--font-display); font-size: 36px;
+  font-weight: 400; color: var(--charcoal); margin-bottom: 12px;
+}
+.success-ref {
+  display: inline-block;
+  background: var(--cream); border: 0.5px solid var(--border-strong);
+  padding: 10px 24px; margin: 16px 0;
+  font-family: var(--font-body); font-size: 16px;
+  font-weight: 500; letter-spacing: 0.1em;
+  color: var(--charcoal); border-radius: 2px;
+}
+.success-desc {
+  font-size: 14px; color: var(--muted); font-weight: 300;
+  max-width: 360px; margin: 0 auto 32px; line-height: 1.7;
+}
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 150;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: white;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 26px;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  transition: all var(--transition);
+}
+.whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.45); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--charcoal);
+  padding: 60px 40px 40px;
+  color: rgba(247,243,238,0.5);
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+  margin-bottom: 48px;
+}
+.footer-brand {
+  font-family: var(--font-display); font-size: 28px;
+  font-weight: 300; color: var(--cream);
+  margin-bottom: 16px;
+}
+.footer-brand em { font-style: italic; color: var(--gold-light); }
+.footer-tagline {
+  font-family: var(--font-display); font-size: 15px;
+  font-style: italic; font-weight: 300;
+  color: rgba(247,243,238,0.45); margin-bottom: 24px;
+  line-height: 1.6;
+}
+.footer-col-title {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(247,243,238,0.4);
+  margin-bottom: 20px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  font-size: 13px; font-weight: 300;
+  color: rgba(247,243,238,0.55); text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-bottom {
+  border-top: 0.5px solid rgba(247,243,238,0.1);
+  padding-top: 28px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 12px; color: rgba(247,243,238,0.3); }
+
+
+/* ── PDP MODAL ── */
+.pdp-overlay {
+  position: fixed; inset: 0; background: rgba(44,43,40,0.5);
+  z-index: 300; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.pdp-overlay.open { opacity: 1; pointer-events: all; }
+
+.pdp-modal {
+  position: fixed; inset: 0;
+  background: var(--warm-white);
+  z-index: 301;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.pdp-modal.open { transform: translateY(0); }
+
+.pdp-close {
+  position: fixed; top: 16px; right: 20px;
+  background: rgba(247,243,238,0.9); border: 0.5px solid var(--border);
+  cursor: pointer; font-size: 22px; color: var(--charcoal); z-index: 400;
+  line-height: 1; padding: 6px 12px; border-radius: 2px;
+  transition: all 0.2s;
+}
+.pdp-close:hover { background: var(--charcoal); color: var(--cream); }
+
+/* Mobile-first: single column */
+.pdp-inner {
+  display: flex; flex-direction: column;
+  flex: 1;
+}
+
+.pdp-gallery {
+  width: 100%;
+  background: var(--cream);
+  display: flex; flex-direction: column;
+}
+.pdp-main-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  cursor: pointer;
+}
+.pdp-main-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  transition: opacity 0.2s ease;
+}
+.pdp-thumbs {
+  display: flex; gap: 8px; padding: 12px 16px;
+  border-top: 0.5px solid var(--border);
+  justify-content: center; flex-shrink: 0;
+}
+.pdp-thumb {
+  width: 56px; height: 56px;
+  border: 1.5px solid transparent;
+  cursor: pointer; overflow: hidden; border-radius: 2px;
+  transition: border-color 0.2s;
+}
+.pdp-thumb.active { border-color: var(--gold); }
+.pdp-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+.pdp-info {
+  padding: 32px 24px 80px;
+}
+.pdp-element-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 6px;
+}
+.pdp-element-dot {
+  width: 6px; height: 6px; border-radius: 50%; display: inline-block;
+}
+.pdp-name {
+  font-family: var(--font-display);
+  font-size: 40px; font-weight: 300;
+  color: var(--charcoal); margin-bottom: 4px;
+  white-space: nowrap;
+}
+.pdp-type {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 20px;
+}
+.pdp-price {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 400; color: var(--charcoal); margin-bottom: 24px;
+}
+.pdp-divider { width: 36px; height: 0.5px; background: var(--gold); margin-bottom: 20px; }
+.pdp-state-label, .pdp-mat-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+}
+.pdp-mat-label { color: var(--muted); margin-top: 20px; }
+.pdp-state {
+  font-family: var(--font-display);
+  font-size: 18px; font-style: italic; font-weight: 300;
+  color: var(--charcoal); line-height: 1.5; margin-bottom: 4px;
+}
+.pdp-materials {
+  font-size: 13px; font-weight: 300; color: var(--muted);
+  line-height: 1.7; margin-bottom: 32px;
+}
+.pdp-btn-add {
+  width: 100%; padding: 16px; background: var(--charcoal); color: var(--cream);
+  font-family: var(--font-body); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  border: none; cursor: pointer; border-radius: 2px; margin-bottom: 10px;
+  transition: background 0.2s;
+}
+.pdp-btn-add:hover { background: var(--gold-dark); }
+.pdp-btn-wa {
+  width: 100%; padding: 14px; background: transparent; color: var(--charcoal);
+  font-family: var(--font-body); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  border: 0.5px solid var(--border-strong); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  text-decoration: none; transition: all 0.2s;
+}
+.pdp-btn-wa:hover { background: var(--charcoal); color: var(--cream); }
+.pdp-note {
+  margin-top: 12px; text-align: center;
+  font-size: 12px; color: var(--muted); font-style: italic;
+  font-family: var(--font-display);
+}
+.pdp-details {
+  margin-top: 40px;
+  border-top: 0.5px solid var(--border);
+  padding-top: 24px;
+}
+.pdp-detail-row {
+  display: flex; justify-content: space-between;
+  padding: 11px 0; border-bottom: 0.5px solid var(--border);
+  font-size: 13px;
+}
+.pdp-detail-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pdp-detail-value { color: var(--charcoal); font-weight: 300; }
+.pdp-care-note {
+  margin-top: 28px;
+  padding: 18px;
+  background: rgba(184,151,90,0.06);
+  border-left: 2px solid var(--gold);
+  font-size: 13px; color: var(--muted); line-height: 1.7; font-weight: 300;
+}
+
+/* Desktop: side by side */
+@media (min-width: 900px) {
+  .pdp-modal { overflow: hidden; }
+  .pdp-inner { flex-direction: row; height: 100vh; overflow: hidden; }
+  .pdp-gallery { width: 50%; flex-shrink: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+  .pdp-main-img { flex: 1; min-height: 0; aspect-ratio: unset; height: auto; }
+  .pdp-main-img img { object-fit: contain; object-position: center top; width: 100%; height: 100%; }
+  .pdp-thumbs { flex-shrink: 0; }
+  .pdp-info { width: 50%; overflow-y: auto; padding: 56px 48px 80px 40px; }
+}
+
+
+/* ── LEGAL PAGES ── */
+.legal-overlay {
+  position: fixed; inset: 0; background: rgba(44,43,40,0.5);
+  z-index: 400; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.legal-overlay.open { opacity: 1; pointer-events: all; }
+
+.legal-modal {
+  position: fixed; inset: 0;
+  background: var(--warm-white);
+  z-index: 401;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.legal-modal.open { transform: translateY(0); }
+
+.legal-header {
+  position: sticky; top: 0;
+  background: rgba(253,250,247,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+  padding: 20px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 10;
+}
+.legal-title {
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 400; color: var(--charcoal);
+}
+.legal-close {
+  background: none; border: none; cursor: pointer;
+  font-size: 24px; color: var(--muted); padding: 4px 8px;
+  transition: color 0.2s;
+}
+.legal-close:hover { color: var(--charcoal); }
+
+.legal-body {
+  max-width: 720px; margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+.legal-body h2 {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 400;
+  color: var(--charcoal); margin: 36px 0 12px;
+}
+.legal-body h2:first-child { margin-top: 0; }
+.legal-body p {
+  font-size: 14px; font-weight: 300; color: var(--muted);
+  line-height: 1.8; margin-bottom: 12px;
+}
+.legal-body ul {
+  margin: 0 0 12px 20px;
+  font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.8;
+}
+.legal-date {
+  font-size: 12px; color: var(--muted); font-style: italic;
+  margin-bottom: 32px;
+}
+
+/* ── COOKIE BANNER ── */
+.cookie-banner {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 500;
+  background: var(--charcoal);
+  padding: 20px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  border-top: 0.5px solid rgba(247,243,238,0.1);
+}
+.cookie-banner.show { transform: translateY(0); }
+.cookie-text {
+  font-size: 13px; font-weight: 300; color: rgba(247,243,238,0.75);
+  line-height: 1.6; flex: 1; min-width: 200px;
+}
+.cookie-text a {
+  color: var(--gold-light); text-decoration: underline; cursor: pointer;
+}
+.cookie-buttons { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-btn-accept {
+  padding: 10px 24px;
+  background: var(--gold); color: white;
+  font-family: var(--font-body); font-size: 11px;
+  font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  border: none; cursor: pointer; border-radius: 2px;
+  transition: background 0.2s;
+}
+.cookie-btn-accept:hover { background: var(--gold-dark); }
+.cookie-btn-decline {
+  padding: 10px 20px;
+  background: transparent; color: rgba(247,243,238,0.6);
+  font-family: var(--font-body); font-size: 11px;
+  font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  border: 0.5px solid rgba(247,243,238,0.2); cursor: pointer; border-radius: 2px;
+  transition: all 0.2s;
+}
+.cookie-btn-decline:hover { color: var(--cream); border-color: rgba(247,243,238,0.4); }
+
+@media (max-width: 900px) {
+  .legal-header { padding: 16px 20px; }
+  .legal-body { padding: 32px 20px 80px; }
+  .cookie-banner { padding: 16px 20px; }
+}
+
+
+
+
+
+
+
+/* ── PLP HOVER SECOND IMAGE ── */
+.product-img { position: relative; overflow: hidden; }
+.product-img .img-second {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+@media (hover: hover) {
+  .product-card:hover .img-second { opacity: 1; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes heroZoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1); }
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50%       { opacity: 1;   transform: scaleY(1); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-bg {
+    background-image: url("/images/ui/hero-mobile.jpg") !important;
+    background-position: center center;
+  }
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .section { padding: 60px 0; }
+  .section-inner { padding: 0; }
+  .section-header { padding: 0 16px; margin-bottom: 32px; }
+  .filters { padding: 0 16px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; }
+  .product-name { font-size: 16px; }
+  .product-state { font-size: 11px; }
+  .product-price { font-size: 14px; }
+  .elements-strip { grid-template-columns: repeat(2, 1fr); }
+  .collections-grid { grid-template-columns: 1fr; }
+  .story-inner { grid-template-columns: 1fr; gap: 40px; }
+  .story-image-placeholder { display: none; }
+  .made-steps { grid-template-columns: 1fr; gap: 28px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .cart-sidebar { width: 100%; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo-img"><img src="/images/ui/logo-nav.png" alt="Evolove Jewellery" style="height:44px;width:auto;object-fit:contain;"></a>
+  <ul class="nav-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#made-for-you">Made for you</a></li>
+    <li><a href="#story">Our story</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cart" onclick="openCart()">
+    Bag
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('/images/ui/hero-desktop.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Amsterdam · Handmade · Natural stones</p>
+    <h1>More than<br><em>jewellery</em></h1>
+    <p class="hero-tagline">Meaningful. Intentional. Yours.</p>
+    <div class="hero-actions">
+      <a href="#shop" class="btn-primary">Explore the collection</a>
+      <a href="#made-for-you" class="btn-outline-light">Made for you</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Discover</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ELEMENTS STRIP -->
+<div class="elements-strip">
+  <div class="element-card" data-el="fire" onclick="filterByElement('fire')">
+    <span class="element-symbol">Fire</span>
+    <p class="element-desc">Confidence, passion, bold presence</p>
+  </div>
+  <div class="element-card" data-el="water" onclick="filterByElement('water')">
+    <span class="element-symbol">Water</span>
+    <p class="element-desc">Softness, flow, emotional depth</p>
+  </div>
+  <div class="element-card" data-el="air" onclick="filterByElement('air')">
+    <span class="element-symbol">Air</span>
+    <p class="element-desc">Lightness, freedom, self-expression</p>
+  </div>
+  <div class="element-card" data-el="earth" onclick="filterByElement('earth')">
+    <span class="element-symbol">Earth</span>
+    <p class="element-desc">Grounding, stability, inner calm</p>
+  </div>
+</div>
+
+<!-- SHOP -->
+<section class="section" id="shop">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px">
+      <div>
+        <p class="section-eyebrow">The collection</p>
+        <h2 class="section-title">All <em>pieces</em></h2>
+      </div>
+      <div class="filters" id="categoryFilters">
+        <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
+        <button class="filter-btn" onclick="filterCategory('necklace', this)">Necklaces</button>
+        <button class="filter-btn" onclick="filterCategory('choker', this)">Chokers</button>
+        <button class="filter-btn" onclick="filterCategory('bracelet', this)">Bracelets</button>
+        <button class="filter-btn" onclick="filterCategory('earrings', this)">Earrings</button>
+        <button class="filter-btn" onclick="filterCategory('ring', this)">Rings</button>
+      </div>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- COLLECTIONS BY ELEMENT -->
+<section class="section" id="collections" style="background:var(--cream-dark);padding-top:80px;padding-bottom:0">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-eyebrow">The elements</p>
+      <h2 class="section-title">Choose your <em>state</em></h2>
+    </div>
+  </div>
+  <div class="collections-grid">
+    <div class="collection-card" data-el="fire" onclick="filterByElement('fire')">
+      <div class="collection-bg"></div>
+      <div class="collection-overlay"></div>
+      <div class="collection-content">
+        <p class="collection-el-name">Fire</p>
+        <p class="collection-tagline">Confidence · Passion · Magnetism</p>
+        <a href="#shop" class="collection-link">Explore Fire →</a>
+      </div>
+    </div>
+    <div class="collection-card" data-el="water" onclick="filterByElement('water')">
+      <div class="collection-bg"></div>
+      <div class="collection-overlay"></div>
+      <div class="collection-content">
+        <p class="collection-el-name">Water</p>
+        <p class="collection-tagline">Softness · Flow · Femininity</p>
+        <a href="#shop" class="collection-link">Explore Water →</a>
+      </div>
+    </div>
+    <div class="collection-card" data-el="air" onclick="filterByElement('air')">
+      <div class="collection-bg"></div>
+      <div class="collection-overlay"></div>
+      <div class="collection-content">
+        <p class="collection-el-name">Air</p>
+        <p class="collection-tagline">Lightness · Freedom · Clarity</p>
+        <a href="#shop" class="collection-link">Explore Air →</a>
+      </div>
+    </div>
+    <div class="collection-card" data-el="earth" onclick="filterByElement('earth')">
+      <div class="collection-bg"></div>
+      <div class="collection-overlay"></div>
+      <div class="collection-content">
+        <p class="collection-el-name">Earth</p>
+        <p class="collection-tagline">Grounding · Stability · Protection</p>
+        <a href="#shop" class="collection-link">Explore Earth →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MADE FOR YOU -->
+<section class="made-for-you" id="made-for-you">
+  <div class="made-inner">
+    <p class="made-eyebrow">Personalised jewellery</p>
+    <h2 class="made-title">A piece made<br><em>for you</em></h2>
+    <p class="made-desc">We begin not with materials, but with questions. Where are you now? What do you want to feel? From there, a piece is created as an anchor of your chosen state.</p>
+    <div class="made-steps">
+      <div class="made-step">
+        <span class="made-step-num">01</span>
+        <p class="made-step-title">Share your story</p>
+        <p class="made-step-desc">Tell me about the state you want to embody — through a short questionnaire or a conversation.</p>
+      </div>
+      <div class="made-step">
+        <span class="made-step-num">02</span>
+        <p class="made-step-title">I create the piece</p>
+        <p class="made-step-desc">Stones, form, and intention are chosen to reflect your state — made entirely by hand.</p>
+      </div>
+      <div class="made-step">
+        <span class="made-step-num">03</span>
+        <p class="made-step-title">Your anchor arrives</p>
+        <p class="made-step-desc">A piece that is genuinely yours — not just beautiful, but deeply personal.</p>
+      </div>
+    </div>
+    <a href="https://wa.me/31616144325?text=Hi%20Victoria%2C%20I'd%20love%20to%20discuss%20a%20personalised%20piece" target="_blank" class="btn-primary" style="background:var(--gold);color:white">Begin your conversation →</a>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section" id="story">
+  <div class="story-inner">
+    <div class="story-image-placeholder" style="background:none;padding:0;overflow:hidden;border-radius:2px"><img src="/images/ui/victoria.jpg" alt="Victoria" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+    <div class="story-content">
+      <p class="section-eyebrow">Our story</p>
+      <h2 class="section-title">Beauty as a<br><em>practice</em></h2>
+      <p class="story-text">Evolove was born at an intersection I've lived in for years — between the psychology of inner transformation and a deep love of beauty, form and meaning.</p>
+      <p class="story-text">After eight years in fashion at Calvin Klein, and years of work as a life coach and NLP practitioner, I found myself drawn to creating something that held both worlds at once. Not jewellery that merely decorates, but pieces that carry genuine intention — anchors for the states we choose to live from.</p>
+      <p class="story-text">Every piece is made by hand, in Amsterdam. Each one begins not with a design, but with a feeling.</p>
+      <p class="story-signature">— Victoria</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" style="background:var(--cream-dark)">
+  <div class="section-inner" style="max-width:700px">
+    <div class="section-header">
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-title">We'd love to<br><em>hear from you</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px">
+      <div style="padding:28px;background:var(--warm-white);border:0.5px solid var(--border)">
+        <p style="font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">WhatsApp</p>
+        <p style="font-family:var(--font-display);font-size:18px;font-weight:300;color:var(--charcoal);margin-bottom:8px">Quick questions &amp; orders</p>
+        <a href="https://wa.me/31616144325" target="_blank" style="font-size:13px;color:var(--muted);text-decoration:none">+31 616 144 325 →</a>
+      </div>
+      <div style="padding:28px;background:var(--warm-white);border:0.5px solid var(--border)">
+        <p style="font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Instagram</p>
+        <p style="font-family:var(--font-display);font-size:18px;font-weight:300;color:var(--charcoal);margin-bottom:8px">Follow the journey</p>
+        <a href="https://instagram.com/evolove_jewellery" target="_blank" style="font-size:13px;color:var(--muted);text-decoration:none">@evolove_jewellery →</a>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);font-weight:300">Based in Amsterdam, Netherlands. Available for custom orders, events, and wholesale enquiries.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-logo"><img src="/images/ui/logo-footer.png" alt="Evolove Jewellery" style="height:48px;width:auto;object-fit:contain;display:block;margin-bottom:16px;"></div>
+      <p class="footer-tagline">Jewellery with meaning — handmade from natural stones in Amsterdam.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Shop</p>
+      <ul class="footer-links">
+        <li><a href="#shop">All pieces</a></li>
+        <li><a href="#collections">By element</a></li>
+        <li><a href="#made-for-you">Made for you</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Information</p>
+      <ul class="footer-links">
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://wa.me/31616144325" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Care</p>
+      <ul class="footer-links">
+        <li><a href="#" onclick="openLegal('shipping'); return false;">Shipping</a></li>
+        <li><a href="#" onclick="openLegal('returns'); return false;">Returns</a></li>
+        <li><a href="#" onclick="openLegal('care'); return false;">Jewellery care</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Evolove Jewellery. Amsterdam, Netherlands.</p>
+    <p class="footer-copy" style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="#" onclick="openLegal('privacy'); return false;" style="color:rgba(247,243,238,0.3);text-decoration:none;font-size:12px;transition:color 0.2s" onmouseover="this.style.color='rgba(247,243,238,0.6)'" onmouseout="this.style.color='rgba(247,243,238,0.3)'">Privacy Policy</a>
+      <a href="#" onclick="openLegal('cookies'); return false;" style="color:rgba(247,243,238,0.3);text-decoration:none;font-size:12px;transition:color 0.2s" onmouseover="this.style.color='rgba(247,243,238,0.6)'" onmouseout="this.style.color='rgba(247,243,238,0.3)'">Cookie Policy</a>
+      <a href="#" onclick="openLegal('terms'); return false;" style="color:rgba(247,243,238,0.3);text-decoration:none;font-size:12px;transition:color 0.2s" onmouseover="this.style.color='rgba(247,243,238,0.6)'" onmouseout="this.style.color='rgba(247,243,238,0.3)'">Terms & Conditions</a>
+      <span style="color:rgba(247,243,238,0.3);font-size:12px">Made with intention.</span>
+    </p>
+  </div>
+</footer>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2 class="cart-title">Your bag</h2>
+    <button class="cart-close" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Your bag is empty</p>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amount" id="cartTotal">€0</span>
+    </div>
+    <button class="btn-checkout" onclick="openOrderModal()">Place order request</button>
+    <p class="cart-note">No payment now — I'll contact you within 24 hours</p>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal" id="modalContent">
+    <div class="modal-header">
+      <h2 class="modal-title">Place your order</h2>
+      <p class="modal-subtitle">Fill in your details and I'll be in touch within 24 hours</p>
+    </div>
+    <div class="modal-body">
+      <div class="order-summary">
+        <p class="order-summary-title">Order summary</p>
+        <div id="modalSummaryItems"></div>
+        <div class="order-summary-total">
+          <span>Total</span>
+          <span id="modalTotal">€0</span>
+        </div>
+      </div>
+      <div class="form-note">
+        ✦ No payment is required now. Once I receive your order, I'll reach out personally within 24 hours to confirm everything and arrange payment.
+      </div>
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First name *</label>
+            <input class="form-input" type="text" id="firstName" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last name *</label>
+            <input class="form-input" type="text" id="lastName" required placeholder="Your surname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email address *</label>
+          <input class="form-input" type="email" id="email" required placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone number *</label>
+          <input class="form-input" type="tel" id="phone" required placeholder="+31 6 ...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Delivery address *</label>
+          <input class="form-input" type="text" id="address" required placeholder="Street, number, city, country">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message (optional)</label>
+          <textarea class="form-input" id="message" rows="3" placeholder="Any special requests or questions..." style="resize:vertical"></textarea>
+        </div>
+        <button type="submit" class="btn-confirm">Confirm order request</button>
+        <button type="button" class="modal-cancel" onclick="closeOrderModal()">Cancel, go back to bag</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- PDP MODAL -->
+<div class="pdp-overlay" id="pdpOverlay" onclick="closePDP()"></div>
+<div class="pdp-modal" id="pdpModal">
+  <button class="pdp-close" onclick="closePDP()">×</button>
+  <div class="pdp-inner">
+    <div class="pdp-gallery">
+      <div class="pdp-main-img" id="pdpMainImg">
+        <img id="pdpPhoto" src="" alt="">
+      </div>
+      <div class="pdp-thumbs" id="pdpThumbs"></div>
+    </div>
+    <div class="pdp-info">
+      <div class="pdp-element-tag" id="pdpElement"></div>
+      <h2 class="pdp-name" id="pdpName"></h2>
+      <p class="pdp-type" id="pdpType"></p>
+      <p class="pdp-price" id="pdpPrice"></p>
+      <div class="pdp-divider"></div>
+      <div class="pdp-state-label">Inner state</div>
+      <p class="pdp-state" id="pdpState"></p>
+      <div class="pdp-mat-label">Materials</div>
+      <p class="pdp-materials" id="pdpMaterials"></p>
+      <button class="pdp-btn-add" id="pdpAddBtn">Add to bag</button>
+      <a class="pdp-btn-wa" id="pdpWaBtn" href="#" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Ask Victoria
+      </a>
+      <p class="pdp-note">No payment now — Victoria will contact you within 24 hours</p>
+
+      <div class="pdp-details" id="pdpDetails"></div>
+
+      <div class="pdp-care-note">
+        ✦ Each piece is handmade in Amsterdam. Natural stone colours may vary slightly — making every piece uniquely yours.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">
+    We use essential cookies to make this site work. By continuing, you agree to our
+    <a onclick="openLegal('cookies')">Cookie Policy</a> and
+    <a onclick="openLegal('privacy')">Privacy Policy</a>.
+  </p>
+  <div class="cookie-buttons">
+    <button class="cookie-btn-decline" onclick="declineCookies()">Decline</button>
+    <button class="cookie-btn-accept" onclick="acceptCookies()">Accept</button>
+  </div>
+</div>
+
+<!-- LEGAL OVERLAY -->
+<div class="legal-overlay" id="legalOverlay" onclick="closeLegal()"></div>
+
+<!-- LEGAL MODAL -->
+<div class="legal-modal" id="legalModal">
+  <div class="legal-header">
+    <h2 class="legal-title" id="legalModalTitle">Policy</h2>
+    <button class="legal-close" onclick="closeLegal()">×</button>
+  </div>
+  <div class="legal-body" id="legalModalBody"></div>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/31616144325?text=Hi%20Victoria%2C%20I'd%20like%20to%20know%20more%20about%20Evolove%20jewellery" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+// ── PRODUCT DATA ──
+const products = [
+  // ── NEW ARRIVALS (top) ──
+  { id:64, name:"Abundance",          type:"necklace",  element:"fire",  price:60,  materials:"Dragon Blood Jasper, gold-plated metal",                                     state:"Prosperity · Vitality · Sensuality · Fullness of life" },
+  { id:65, name:"Abundance",          type:"earrings",  element:"fire",  price:25,  materials:"Dragon Blood Jasper, gold-plated metal",                                     state:"Prosperity · Vitality · Sensuality · Fullness of life" },
+  { id:62, name:"The Bright Side",    type:"necklace",  element:"fire",  price:65,  materials:"Yellow chalcedony, rhodium-plated metal",                                    state:"Optimism · Resilience · Confidence · Positive perspective" },
+  { id:63, name:"The Bright Side",    type:"earrings",  element:"fire",  price:25,  materials:"Yellow chalcedony, rhodium-plated metal",                                    state:"Optimism · Resilience · Confidence · Positive perspective" },
+  { id:59, name:"In Bloom",           type:"necklace",  element:"air",   price:30,  materials:"Glass beads, rhodium-plated metal",                                          state:"Renewal · Growth · Optimism · Lightness" },
+  { id:60, name:"In Bloom",           type:"ring",      element:"air",   price:18,  materials:"Glass beads, rhodium-plated metal",                                          state:"Renewal · Growth · Optimism · Lightness" },
+  { id:61, name:"In Bloom",           type:"earrings",  element:"air",   price:22,  materials:"Glass beads, rhodium-plated metal",                                          state:"Renewal · Growth · Optimism · Lightness" },
+  { id:56, name:"Dolce Vita",         type:"choker",    element:"fire",  price:40,  materials:"Dalmatian jasper, ceramic heart bead, gold-plated metal",                 state:"Joyful femininity · Playfulness · Confidence · Pleasure" },
+  { id:57, name:"Dolce Vita",         type:"bracelet",  element:"fire",  price:30,  materials:"Dalmatian jasper, ceramic heart bead, gold-plated metal",                 state:"Playful confidence · Warmth · Freedom · Lighthearted joy" },
+  { id:58, name:"Dolce Vita",         type:"earrings",  element:"fire",  price:20,  materials:"Dalmatian jasper, gold-plated metal",                                     state:"Playful boldness · Individuality · Joyful expression" },
+  { id:54, name:"Candy Necklace",     type:"choker",    element:"water", price:30,  materials:"Chalcedony, gold-plated metal",                                           state:"Joy · Playfulness · Nostalgia" },
+  { id:55, name:"Sugar Drops",        type:"earrings",  element:"water", price:20,  materials:"Rose quartz, gold-plated metal",                                          state:"Lightness · Feminine warmth · Playful elegance" },
+  { id:49, name:"Pure Love",           type:"choker",    element:"water", price:55,  materials:"Freshwater pearls, mother-of-pearl, gold-plated & rhodium-plated metal", state:"Grace · Elegance · Love · Tenderness" },
+  { id:50, name:"Pure Love",           type:"bracelet",  element:"water", price:40,  materials:"Freshwater pearls, mother-of-pearl, gold-plated & rhodium-plated metal", state:"Grace · Elegance · Love · Tenderness" },
+  { id:51, name:"Pure Love",           type:"earrings",  element:"water", price:25,  materials:"Freshwater pearls, mother-of-pearl, gold-plated & rhodium-plated metal", state:"Grace · Elegance · Love · Tenderness" },
+  { id:46, name:"I Am... Steady",      type:"earrings",  element:"earth", price:25,  materials:"Glass, rhodium-plated metal",                                            state:"Inner steadiness · Calm · Balance" },
+  { id:47, name:"I Am... Steady",      type:"necklace",  element:"earth", price:20,  materials:"Glass, rhodium-plated metal",                                            state:"Inner steadiness · Calm · Balance" },
+  { id:48, name:"I Am... Steady",      type:"choker",    element:"earth", price:25,  materials:"Green Ghost Quartz, rhodium-plated metal",                               state:"Inner steadiness · Calm · Balance" },
+  { id:44, name:"Pink Cloud",          type:"choker",    element:"water", price:65,  materials:"Pink Cat Eye, Kunzite, Moonstone, freshwater pearls, baroque pearl, rhodium-plated", state:"Tenderness · Emotional ease · Self-love" },
+  { id:45, name:"Pink Cloud",          type:"earrings",  element:"water", price:20,  materials:"Pink Cat Eye, Moonstone, freshwater pearls, rhodium-plated metal",       state:"Tenderness · Emotional ease · Self-love" },
+  { id:43, name:"Inner Harmony",       type:"bracelet",  element:"earth", price:40,  materials:"Kiwi Jasper, Peach Moonstone, baroque pearls, rhodium-plated metal",     state:"Emotional balance · Inner harmony · Gentle stability" },
+  { id:26, name:"Sky of Love",         type:"bracelet",  element:"water", price:32,  materials:"Aquamarine, rhodium-plated metal",                                       state:"Tenderness · Emotional safety · Self-love" },
+  { id:39, name:"I Am... Limitless",   type:"earrings",  element:"air",   price:25,  materials:"Gold-plated metal",                                                      state:"Clarity · Perspective · Expansion" },
+  { id:40, name:"I Am... Limitless Max", type:"choker",  element:"air",   price:28,  materials:"Lapis lazuli, gold-plated metal",                                        state:"Clarity · Perspective · Intuition · Expansion" },
+  { id:53, name:"I Am... Limitless Mini", type:"choker", element:"air",   price:28,  materials:"Gold-plated metal",                                                      state:"Clarity · Perspective · Expansion" },
+  { id:41, name:"I Am... Limitless",   type:"necklace",  element:"air",   price:25,  materials:"Gold-plated metal",                                                      state:"Clarity · Perspective · Expansion" },
+  // ── COLLECTION ──
+  { id:0,  name:"Playful Heart",       type:"earrings",  element:"earth", price:20,  materials:"Dalmatian Jasper, gold-plated metal",                                    state:"Playfulness · Joy · Self-acceptance" },
+  { id:1,  name:"Playful Heart",       type:"necklace",  element:"earth", price:49,  materials:"Dalmatian Jasper, gold-plated chain and pendant",                        state:"Playfulness · Joy · Self-acceptance" },
+  { id:7,  name:"Cool Confidence",     type:"choker",    element:"air",   price:45,  materials:"Aqua quartz, hematine, rhodium-plated metal",                            state:"Calm confidence · Mental clarity · Quiet power" },
+  { id:8,  name:"11:11",               type:"bracelet",  element:"air",   price:30,  materials:"Morganite, Blue Chalcedony, gold-plated metal, enamel pendant",          state:"Alignment · Trust · Feeling guided" },
+  { id:9,  name:"Soul Wings",          type:"choker",    element:"air",   price:52,  materials:"Freshwater Pearls, gold-plated",                                         state:"Femininity · Self-love · Grace" },
+  { id:10, name:"Soul Wings",          type:"bracelet",  element:"air",   price:27,  materials:"Freshwater Pearls, gold-plated",                                         state:"Femininity · Self-love · Grace" },
+  { id:11, name:"Gentle Balance",      type:"choker",    element:"water", price:55,  materials:"Agate, gold-plated",                                                     state:"Tenderness · Emotional balance · Self-love" },
+  { id:12, name:"Gentle Balance",      type:"earrings",  element:"water", price:22,  materials:"Agate, gold-plated metal",                                               state:"Tenderness · Emotional balance · Feminine calm" },
+  { id:13, name:"Soft Light",          type:"choker",    element:"water", price:50,  materials:"Aquamarine, freshwater pearls, mother-of-pearl pendant, rhodium-plated metal", state:"Inner calm · Emotional harmony · Gentle presence" },
+  { id:14, name:"Soft Light",          type:"earrings",  element:"water", price:20,  materials:"Aquamarine, freshwater pearls, rhodium-plated metal",                    state:"Inner calm · Emotional harmony · Gentle presence" },
+  { id:15, name:"Light as a Feather",  type:"necklace",  element:"air",   price:65,  materials:"Freshwater pearls, mother-of-pearl pendant, rhodium-plated metal",       state:"Lightness · Freedom · Effortless elegance" },
+  { id:16, name:"Light as a Feather",  type:"earrings",  element:"air",   price:30,  materials:"Freshwater pearls, mother-of-pearl pendant, rhodium-plated metal",       state:"Lightness · Freedom · Effortless elegance" },
+  { id:17, name:"Moon Garden",         type:"choker",    element:"water", price:50,  materials:"Moonstone, freshwater pearls, dendritic agate, rhodium-plated metal",    state:"Intuition · Inner harmony · Natural flow" },
+  { id:18, name:"Moon Garden",         type:"earrings",  element:"water", price:20,  materials:"Moonstone, freshwater pearls, dendritic agate, rhodium-plated metal",    state:"Intuition · Inner harmony · Emotional balance" },
+  { id:19, name:"Golden Hour",         type:"necklace",  element:"water", price:75,  materials:"Freshwater pearls, gold-plated",                                         state:"Elegance · Self-worth · Calm confidence" },
+  { id:20, name:"Golden Hour",         type:"earrings",  element:"water", price:20,  materials:"Freshwater pearls, gold-plated",                                         state:"Elegance · Self-worth · Refined presence" },
+  { id:21, name:"Labradorite Dreams",  type:"bracelet",  element:"earth", price:40,  materials:"Labradorite, mother-of-pearl pendant, rhodium-plated",                   state:"Intuition · Energetic protection · Self-trust" },
+  { id:22, name:"Labradorite Dreams",  type:"choker",    element:"earth", price:20,  materials:"Labradorite, mother-of-pearl pendant, rhodium-plated",                   state:"Intuition · Energetic protection · Self-trust" },
+  { id:23, name:"I Am... Powerful",    type:"choker",    element:"fire",  price:25,  materials:"Garnet, gold-plated",                                                    state:"Self-confidence · Power · Courage" },
+  { id:24, name:"I Am... Powerful",    type:"necklace",  element:"fire",  price:20,  materials:"Gold-plated metal",                                                      state:"Self-confidence · Power · Embodied presence" },
+  { id:25, name:"I Am... Powerful",    type:"earrings",  element:"fire",  price:25,  materials:"Gold-plated metal",                                                      state:"Self-confidence · Power · Courage" },
+  { id:27, name:"I Am... Seen",        type:"choker",    element:"air",   price:25,  materials:"Sunstone, gold-plated",                                                  state:"Self-expression · Radiance · Visibility" },
+  { id:28, name:"I Am... Seen",        type:"necklace",  element:"air",   price:20,  materials:"Gold-plated metal",                                                      state:"Self-expression · Radiance · Visibility" },
+  { id:29, name:"I Am... Seen",        type:"earrings",  element:"air",   price:25,  materials:"Gold-plated metal",                                                      state:"Self-expression · Radiance · Visibility" },
+  { id:30, name:"I Am... Grounded",    type:"choker",    element:"earth", price:25,  materials:"Green Garnet, gold-plated",                                              state:"Grounding · Protection · Inner stability" },
+  { id:31, name:"I Am... Grounded",    type:"necklace",  element:"earth", price:20,  materials:"Gold-plated metal",                                                      state:"Grounding · Protection · Inner stability" },
+  { id:32, name:"I Am... Grounded",    type:"earrings",  element:"earth", price:25,  materials:"Gold-plated metal",                                                      state:"Grounding · Protection · Inner stability" },
+  { id:33, name:"Solar Flame",         type:"earrings",  element:"fire",  price:25,  materials:"Garnet, gold-plated metal",                                              state:"Confidence · Vitality · Magnetism" },
+  { id:34, name:"Solar Flame",         type:"necklace",  element:"fire",  price:60,  materials:"Garnet, gold-plated metal",                                              state:"Confidence · Vitality · Passion" },
+  { id:35, name:"Hot Chocolate",       type:"necklace",  element:"fire",  price:55,  materials:"Chocolate Hematine, Smoky Quartz, gold-plated metal",                    state:"Sensuality · Magnetism · Feminine allure" },
+  { id:36, name:"Hot Chocolate",       type:"earrings",  element:"fire",  price:20,  materials:"Chocolate Hematine, Smoky Quartz, gold-plated metal",                    state:"Sensuality · Magnetism · Warmth" },
+  { id:37, name:"Strawberry Field",    type:"choker",    element:"earth", price:55,  materials:"Baroque Pearl, freshwater pearls, dalmatian jasper, glass beads, rhodium-plated", state:"Playfulness · Joy · Lightheartedness" },
+  { id:38, name:"Strawberry Field",    type:"bracelet",  element:"earth", price:21,  materials:"Baroque Pearl, freshwater pearls, dalmatian jasper, glass beads, rhodium-plated", state:"Playfulness · Joy · Spontaneity" },
+  // ── OCEAN (bottom) ──
+  { id:2,  name:"Ocean",               type:"choker",    element:"water", price:60,  materials:"Sodalite, Terahertz, Hematin, rhodium-plated metal",                     state:"Inner calm · Clarity · Intuitive flow" },
+  { id:3,  name:"Ocean",               type:"earrings",  element:"water", price:19,  materials:"Sodalite, rhodium-plated metal",                                         state:"Inner calm · Clarity · Freedom" },
+  { id:4,  name:"Ocean 2.0",           type:"choker",    element:"water", price:80,  materials:"Aqua quartz, crystal quartz, rhodium-plated metal",                      state:"Inner calm · Freedom · Openness" },
+  { id:42, name:"Ocean Drops",         type:"necklace",  element:"water", price:70,  materials:"Crystal quartz, baroque pearl, rhodium-plated metal",                    state:"Fluidity · Feminine radiance · Lightness · Clarity" },
+  { id:5,  name:"Ice",                 type:"earrings",  element:"water", price:18,  materials:"Aqua quartz, rhodium-plated metal",                                      state:"Inner calm · Clarity · Openness" },
+  { id:6,  name:"Melting Ice",         type:"necklace",  element:"water", price:78,  materials:"Aqua quartz, rhodium-plated metal",                                      state:"Emotional release · Softness · Flow" },
+];
+
+// ── CART STATE ──
+let cart = [];
+let currentFilter = 'all';
+let currentElement = null;
+
+
+// Product images
+const productImages = {
+  0: ["/images/00-playful-heart-earrings/1.JPG", "/images/00-playful-heart-earrings/2.JPG", "/images/00-playful-heart-earrings/3.JPG", "/images/00-playful-heart-earrings/4.JPG"],
+  1: ["/images/01-playful-heart/1.JPG", "/images/01-playful-heart/2.JPG", "/images/01-playful-heart/3.JPG", "/images/01-playful-heart/4.JPG"],
+  2: ["/images/02-ocean-choker/1.JPG", "/images/02-ocean-choker/2.JPG", "/images/02-ocean-choker/3.JPG", "/images/02-ocean-choker/4.JPG"],
+  3: ["/images/03-ocean-earrings/1.JPG", "/images/03-ocean-earrings/2.JPG", "/images/03-ocean-earrings/3.JPG"],
+  4: ["/images/04-ocean-2-0-choker/1.JPG", "/images/04-ocean-2-0-choker/2.JPG", "/images/04-ocean-2-0-choker/3.JPG", "/images/04-ocean-2-0-choker/4.JPG"],
+  5: ["/images/05-ice-earrings/1.JPG", "/images/05-ice-earrings/2.JPG", "/images/05-ice-earrings/3.JPG", "/images/05-ice-earrings/4.JPG"],
+  6: ["/images/06-melting-ice-necklace/1.JPG", "/images/06-melting-ice-necklace/2.JPG", "/images/06-melting-ice-necklace/3.JPG"],
+  7: ["/images/07-cool-confidence-choker/1.JPG", "/images/07-cool-confidence-choker/2.JPG"],
+  8: ["/images/08-11-11-bracelet/1.JPG", "/images/08-11-11-bracelet/2.JPG", "/images/08-11-11-bracelet/3.JPG", "/images/08-11-11-bracelet/4.JPG", "/images/08-11-11-bracelet/5.JPG"],
+  9: ["/images/09-soul-wings-choker/1.JPG", "/images/09-soul-wings-choker/2.JPG", "/images/09-soul-wings-choker/3.JPG"],
+  10: ["/images/10-soul-wings-bracelet/1.JPG", "/images/10-soul-wings-bracelet/2.JPG", "/images/10-soul-wings-bracelet/3.JPG", "/images/10-soul-wings-bracelet/4.JPG"],
+  11: ["/images/11-gentle-balance-choker/1.JPG", "/images/11-gentle-balance-choker/2.JPG", "/images/11-gentle-balance-choker/3.JPG"],
+  12: ["/images/12-gentle-balance-earrings/1.JPG", "/images/12-gentle-balance-earrings/2.JPG", "/images/12-gentle-balance-earrings/3.JPG", "/images/12-gentle-balance-earrings/4.JPG"],
+  13: ["/images/13-soft-light-choker/1.JPG", "/images/13-soft-light-choker/2.JPG", "/images/13-soft-light-choker/3.JPG"],
+  14: ["/images/14-soft-light-earrings/1.JPG", "/images/14-soft-light-earrings/2.JPG", "/images/14-soft-light-earrings/3.JPG"],
+  15: ["/images/15-light-as-a-feather-necklace/1.JPG", "/images/15-light-as-a-feather-necklace/2.JPG", "/images/15-light-as-a-feather-necklace/3.JPG"],
+  16: ["/images/16-light-as-a-feather-earrings/1.JPG", "/images/16-light-as-a-feather-earrings/2.JPG", "/images/16-light-as-a-feather-earrings/3.JPG", "/images/16-light-as-a-feather-earrings/4.JPG"],
+  17: ["/images/17-moon-garden-choker/1.JPG", "/images/17-moon-garden-choker/2.JPG", "/images/17-moon-garden-choker/3.JPG", "/images/17-moon-garden-choker/4.JPG"],
+  18: ["/images/18-moon-garden-earrings/1.JPG", "/images/18-moon-garden-earrings/2.JPG", "/images/18-moon-garden-earrings/3.JPG"],
+  19: ["/images/19-golden-hour-necklace/1.JPG", "/images/19-golden-hour-necklace/2.JPG", "/images/19-golden-hour-necklace/3.JPG", "/images/19-golden-hour-necklace/4.JPG"],
+  20: ["/images/20-golden-hour-earrings/1.JPG", "/images/20-golden-hour-earrings/2.JPG", "/images/20-golden-hour-earrings/3.JPG"],
+  21: ["/images/21-labradorite-dreams-bracelet/1.JPG", "/images/21-labradorite-dreams-bracelet/2.JPG", "/images/21-labradorite-dreams-bracelet/3.JPG"],
+  22: ["/images/22-labradorite-dreams-choker/1.JPG", "/images/22-labradorite-dreams-choker/2.JPG", "/images/22-labradorite-dreams-choker/3.JPG"],
+  23: ["/images/23-i-am-powerful-choker/1.JPG", "/images/23-i-am-powerful-choker/2.JPG", "/images/23-i-am-powerful-choker/3.JPG", "/images/23-i-am-powerful-choker/4.JPG"],
+  24: ["/images/24-i-am-powerful-necklace/1.JPG", "/images/24-i-am-powerful-necklace/2.JPG", "/images/24-i-am-powerful-necklace/3.JPG", "/images/24-i-am-powerful-necklace/4.JPG"],
+  25: ["/images/25-i-am-powerful-earrings/1.JPG", "/images/25-i-am-powerful-earrings/2.JPG", "/images/25-i-am-powerful-earrings/3.JPG", "/images/25-i-am-powerful-earrings/4.JPG"],
+  26: ["/images/26-sky-of-love-bracelet/1.JPG", "/images/26-sky-of-love-bracelet/2.JPG"],
+  27: ["/images/32-i-am-seen-choker/1.JPG", "/images/32-i-am-seen-choker/2.JPG", "/images/32-i-am-seen-choker/3.JPG"],
+  28: ["/images/28-i-am-seen-necklace/1.JPG", "/images/28-i-am-seen-necklace/2.JPG", "/images/28-i-am-seen-necklace/3.JPG"],
+  29: ["/images/29-i-am-seen-earrings/1.JPG", "/images/29-i-am-seen-earrings/2.JPG", "/images/29-i-am-seen-earrings/3.JPG", "/images/29-i-am-seen-earrings/4.JPG"],
+  33: ["/images/26-solar-flame-earrings/1.JPG", "/images/26-solar-flame-earrings/2.JPG", "/images/26-solar-flame-earrings/3.JPG"],
+  34: ["/images/27-solar-flame-necklace/1.JPG", "/images/27-solar-flame-necklace/2.JPG", "/images/27-solar-flame-necklace/3.JPG"],
+  35: ["/images/28-hot-chocolate-necklace/1.JPG", "/images/28-hot-chocolate-necklace/2.JPG", "/images/28-hot-chocolate-necklace/3.JPG"],
+  36: ["/images/29-hot-chocolate-earrings/1.JPG", "/images/29-hot-chocolate-earrings/2.JPG", "/images/29-hot-chocolate-earrings/3.JPG", "/images/29-hot-chocolate-earrings/4.JPG"],
+  37: ["/images/30-strawberry-field-choker/1.JPG", "/images/30-strawberry-field-choker/2.JPG", "/images/30-strawberry-field-choker/3.JPG"],
+  38: ["/images/31-strawberry-field-bracelet/1.JPG", "/images/31-strawberry-field-bracelet/2.JPG", "/images/31-strawberry-field-bracelet/3.JPG", "/images/31-strawberry-field-bracelet/4.JPG"],
+  30: ["/images/33-i-am-grounded-choker/1.JPG", "/images/33-i-am-grounded-choker/2.JPG", "/images/33-i-am-grounded-choker/3.JPG"],
+  31: ["/images/31-i-am-grounded-necklace/1.JPG", "/images/31-i-am-grounded-necklace/2.JPG", "/images/31-i-am-grounded-necklace/3.JPG"],
+  32: ["/images/32-i-am-grounded-earrings/1.JPG", "/images/32-i-am-grounded-earrings/2.JPG", "/images/32-i-am-grounded-earrings/3.JPG", "/images/32-i-am-grounded-earrings/4.JPG"],
+  39: ["/images/39-i-am-limitless-earrings/1.JPG", "/images/39-i-am-limitless-earrings/2.JPG", "/images/39-i-am-limitless-earrings/3.JPG", "/images/39-i-am-limitless-earrings/4.JPG"],
+  40: ["/images/40-i-am-limitless-choker/1.JPG", "/images/40-i-am-limitless-choker/2.JPG", "/images/40-i-am-limitless-choker/3.JPG"],
+  53: ["/images/40b-i-am-limitless-choker-2/1.JPG", "/images/40b-i-am-limitless-choker-2/2.JPG", "/images/40b-i-am-limitless-choker-2/3.JPG", "/images/40b-i-am-limitless-choker-2/4.JPG"],
+  41: ["/images/41-i-am-limitless-necklace/1.JPG", "/images/41-i-am-limitless-necklace/2.JPG", "/images/41-i-am-limitless-necklace/3.JPG", "/images/41-i-am-limitless-necklace/4.JPG", "/images/41-i-am-limitless-necklace/5.JPG"],
+  43: ["/images/43-inner-harmony-bracelet/1.JPG", "/images/43-inner-harmony-bracelet/2.JPG"],
+  54: ["/images/54-candy-necklace-choker/1.jpeg", "/images/54-candy-necklace-choker/2.JPG", "/images/54-candy-necklace-choker/3.JPG", "/images/54-candy-necklace-choker/4.JPG"],
+  55: ["/images/55-sugar-drops-earrings/1.JPG", "/images/55-sugar-drops-earrings/2.jpeg", "/images/55-sugar-drops-earrings/3.JPG"],
+  56: ["/images/56-dolce-vita-choker/1.JPG", "/images/56-dolce-vita-choker/2.JPG", "/images/56-dolce-vita-choker/3.JPG"],
+  57: ["/images/57-dolce-vita-bracelet/1.JPG", "/images/57-dolce-vita-bracelet/2.JPG", "/images/57-dolce-vita-bracelet/3.JPG"],
+  58: ["/images/58-dolce-vita-earrings/1.JPG", "/images/58-dolce-vita-earrings/2.JPG", "/images/58-dolce-vita-earrings/3.JPG"],
+  59: ["/images/59-in-bloom-necklace/1.JPG", "/images/59-in-bloom-necklace/2.JPG", "/images/59-in-bloom-necklace/3.JPG", "/images/59-in-bloom-necklace/4.JPG"],
+  60: ["/images/60-in-bloom-ring/1.JPG", "/images/60-in-bloom-ring/2.JPG", "/images/60-in-bloom-ring/3.JPG", "/images/60-in-bloom-ring/4.JPG"],
+  61: ["/images/61-in-bloom-earrings/1.JPG", "/images/61-in-bloom-earrings/2.JPG", "/images/61-in-bloom-earrings/3.JPG", "/images/61-in-bloom-earrings/4.JPG"],
+  46: ["/images/46-i-am-steady-earrings/1.JPG", "/images/46-i-am-steady-earrings/2.JPG", "/images/46-i-am-steady-earrings/3.JPG", "/images/46-i-am-steady-earrings/4.JPG"],
+  47: ["/images/47-i-am-steady-necklace/1.JPG", "/images/47-i-am-steady-necklace/2.JPG", "/images/47-i-am-steady-necklace/3.JPG", "/images/47-i-am-steady-necklace/4.JPG"],
+  48: ["/images/48-i-am-steady-choker/1.JPG", "/images/48-i-am-steady-choker/2.JPG", "/images/48-i-am-steady-choker/3.JPG", "/images/48-i-am-steady-choker/4.JPG"],
+};
+
+// ── RENDER PRODUCTS ──
+function renderProducts() {
+  const grid = document.getElementById('productGrid');
+  let filtered = products;
+  if (currentElement) {
+    filtered = products.filter(p => p.element === currentElement);
+  } else if (currentFilter !== 'all') {
+    filtered = products.filter(p => p.type === currentFilter);
+  }
+
+  // Only show products with images for MVP
+  const idsWithImages = new Set([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,46,47,48,53,54,55,56,57,58,59,60,61]);
+  filtered = filtered.filter(p => idsWithImages.has(p.id));
+
+  // Sort: group by name, within group show choker/necklace before earrings
+  const typePriority = { choker: 1, necklace: 1, bracelet: 2, earrings: 3 };
+  filtered = [...filtered].sort((a, b) => {
+    if (a.name !== b.name) return 0;
+    return (typePriority[a.type] || 9) - (typePriority[b.type] || 9);
+  });
+
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card" onclick="openPDP(${p.id})">
+      <div class="product-img">
+        ${productImages[p.id]
+          ? `<img src="${productImages[p.id][0]}" style="width:100%;height:100%;object-fit:cover;object-position:center top;" alt="${p.name}">
+             ${productImages[p.id][1] ? `<img src="${productImages[p.id][1]}" class="img-second" alt="${p.name}">` : ''}`
+          : `<span class="product-img-placeholder">${p.name[0]}</span>`
+        }
+
+      </div>
+      <div class="product-info">
+        <p class="product-name">${p.name}</p>
+        <p class="product-type">${capitalise(p.type)} · ${capitalise(p.element)}</p>
+        <p class="product-state">${p.state}</p>
+        <p class="product-price">€${p.price}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function capitalise(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function filterCategory(cat, btn) {
+  currentFilter = cat;
+  currentElement = null;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+initCookies();
+}
+
+function filterByElement(el) {
+  currentElement = el;
+  currentFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.filter-btn').classList.add('active');
+  renderProducts();
+initCookies();
+  document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── CART ──
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const existing = cart.find(i => i.id === id);
+  if (existing) { existing.qty++; }
+  else { cart.push({ ...product, qty: 1 }); }
+  updateCartUI();
+  openCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  updateCartUI();
+}
+
+function updateQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(id);
+  else updateCartUI();
+}
+
+function updateCartUI() {
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+
+  const itemsEl = document.getElementById('cartItems');
+  const footerEl = document.getElementById('cartFooter');
+
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<p class="cart-empty">Your bag is empty</p>';
+    footerEl.style.display = 'none';
+    return;
+  }
+
+  footerEl.style.display = 'block';
+  document.getElementById('cartTotal').textContent = `€${total}`;
+
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img">
+        ${productImages[item.id] && productImages[item.id][0]
+          ? `<img src="${productImages[item.id][0]}" style="width:100%;height:100%;object-fit:cover;object-position:center top;">`
+          : item.name[0]
+        }
+      </div>
+      <div class="cart-item-info">
+        <p class="cart-item-name">${item.name}</p>
+        <p class="cart-item-type">${capitalise(item.type)}</p>
+        <div class="cart-item-controls">
+          <button class="qty-btn" onclick="updateQty(${item.id}, -1)">−</button>
+          <span class="qty-display">${item.qty}</span>
+          <button class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
+          <button class="cart-item-remove" onclick="removeFromCart(${item.id})">Remove</button>
+        </div>
+      </div>
+      <span class="cart-item-price">€${item.price * item.qty}</span>
+    </div>
+  `).join('');
+}
+
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartSidebar').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── ORDER MODAL ──
+function openOrderModal() {
+  closeCart();
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById('modalTotal').textContent = `€${total}`;
+  document.getElementById('modalSummaryItems').innerHTML = cart.map(i => `
+    <div class="order-summary-item">
+      <span>${i.name} ${capitalise(i.type)} ×${i.qty}</span>
+      <span>€${i.price * i.qty}</span>
+    </div>
+  `).join('');
+  document.getElementById('modalContent').innerHTML = document.getElementById('modalContent').innerHTML;
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOrderModal() {
+  document.getElementById('orderModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function generateRef() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let ref = 'EVO-';
+  for (let i = 0; i < 6; i++) ref += chars[Math.floor(Math.random() * chars.length)];
+  return ref;
+}
+
+function submitOrder(e) {
+  e.preventDefault();
+  const firstName = document.getElementById('firstName').value;
+  const lastName  = document.getElementById('lastName').value;
+  const email     = document.getElementById('email').value;
+  const phone     = document.getElementById('phone').value;
+  const address   = document.getElementById('address').value;
+  const message   = document.getElementById('message').value;
+  const ref       = generateRef();
+  const total     = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+  const itemsList = cart.map(i => `${i.name} ${capitalise(i.type)} x${i.qty} = €${i.price * i.qty}`).join('\n');
+
+  // WhatsApp message
+  const waText = encodeURIComponent(
+    `🌿 New Order Request — ${ref}\n\n` +
+    `Name: ${firstName} ${lastName}\n` +
+    `Email: ${email}\n` +
+    `Phone: ${phone}\n` +
+    `Address: ${address}\n\n` +
+    `Items:\n${itemsList}\n\n` +
+    `Total: €${total}\n\n` +
+    (message ? `Message: ${message}` : '')
+  );
+  window.open(`https://wa.me/31616144325?text=${waText}`, '_blank');
+
+  // Show success
+  const modal = document.getElementById('modalContent');
+  modal.innerHTML = `
+    <div class="success-modal">
+      <span class="success-icon">✦</span>
+      <h2 class="success-title">Order received</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Your reference number</p>
+      <div class="success-ref">${ref}</div>
+      <p class="success-desc">Thank you, ${firstName}. I'll reach out to you personally within 24 hours to confirm your order and arrange everything.</p>
+      <p style="font-size:13px;color:var(--muted);font-style:italic;font-family:var(--font-display);margin-bottom:32px">— Victoria</p>
+      <button class="btn-primary" onclick="closeOrderModal();cart=[];updateCartUI();">Continue browsing</button>
+    </div>
+  `;
+  cart = [];
+  updateCartUI();
+}
+
+
+// ── PDP MODAL ──
+let pdpCurrentIndex = 0;
+let pdpImages = [];
+let pdpTouchStartX = 0;
+let pdpTouchStartY = 0;
+let pdpIsSwiping = false;
+
+const elementColors = {
+  fire: '#C4502A', water: '#3A6E8F', air: '#7A8FA6', earth: '#6B5E42'
+};
+
+function openPDP(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  // Populate text
+  const elColor = elementColors[p.element] || 'var(--gold)';
+  document.getElementById('pdpElement').innerHTML =
+    `<span class="pdp-element-dot" style="background:${elColor}"></span>
+     <span style="color:${elColor}">${capitalise(p.element)}</span>`;
+  document.getElementById('pdpName').textContent = p.name;
+  document.getElementById('pdpType').textContent = capitalise(p.type);
+  document.getElementById('pdpPrice').textContent = `€${p.price}`;
+  document.getElementById('pdpState').textContent = p.state;
+  document.getElementById('pdpMaterials').textContent = p.materials;
+  document.getElementById('pdpAddBtn').onclick = () => { addToCart(id); closePDP(); };
+  document.getElementById('pdpWaBtn').href =
+    `https://wa.me/31616144325?text=Hi%20Victoria%2C%20I'm%20interested%20in%20the%20${encodeURIComponent(p.name)}%20${encodeURIComponent(capitalise(p.type))}%20%E2%82%AC${p.price}`;
+
+  // Detail rows
+  document.getElementById('pdpDetails').innerHTML = `
+    <div class="pdp-detail-row"><span class="pdp-detail-label">Element</span><span class="pdp-detail-value">${capitalise(p.element)}</span></div>
+    <div class="pdp-detail-row"><span class="pdp-detail-label">Type</span><span class="pdp-detail-value">${capitalise(p.type)}</span></div>
+    <div class="pdp-detail-row"><span class="pdp-detail-label">Materials</span><span class="pdp-detail-value">${p.materials}</span></div>
+    <div class="pdp-detail-row"><span class="pdp-detail-label">Made in</span><span class="pdp-detail-value">Amsterdam, by hand</span></div>
+  `;
+
+  // Images
+  pdpImages = productImages[id] ? productImages[id] : [];
+  pdpCurrentIndex = 0;
+
+  const photo = document.getElementById('pdpPhoto');
+  const thumbsEl = document.getElementById('pdpThumbs');
+
+  if (pdpImages.length > 0) {
+    photo.src = pdpImages[0];
+    photo.style.display = 'block';
+    thumbsEl.innerHTML = pdpImages.map((src, i) =>
+      `<div class="pdp-thumb ${i === 0 ? 'active' : ''}" onclick="pdpSetImg(${i})">
+        <img src="${src}" alt="">
+      </div>`
+    ).join('');
+    thumbsEl.style.display = pdpImages.length > 1 ? 'flex' : 'none';
+  } else {
+    photo.src = '';
+    photo.style.display = 'none';
+    thumbsEl.innerHTML = '';
+  }
+
+  document.getElementById('pdpOverlay').classList.add('open');
+  document.getElementById('pdpModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePDP() {
+  document.getElementById('pdpOverlay').classList.remove('open');
+  document.getElementById('pdpModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function pdpSetImg(index) {
+  pdpCurrentIndex = (index + pdpImages.length) % pdpImages.length;
+  const photo = document.getElementById('pdpPhoto');
+  photo.style.opacity = '0';
+  setTimeout(() => { photo.src = pdpImages[pdpCurrentIndex]; photo.style.opacity = '1'; }, 180);
+  document.querySelectorAll('.pdp-thumb').forEach((t, i) =>
+    t.classList.toggle('active', i === pdpCurrentIndex));
+}
+
+// Click to go to next image on desktop
+const pdpMainEl = document.getElementById('pdpMainImg');
+pdpMainEl.addEventListener('click', () => {
+  if (pdpImages.length > 1) pdpSetImg(pdpCurrentIndex + 1);
+});
+
+// Swipe for PDP
+pdpMainEl.addEventListener('touchstart', e => {
+  pdpTouchStartX = e.touches[0].clientX;
+  pdpTouchStartY = e.touches[0].clientY;
+  pdpIsSwiping = false;
+}, { passive: true });
+pdpMainEl.addEventListener('touchmove', e => {
+  const dx = e.touches[0].clientX - pdpTouchStartX;
+  const dy = e.touches[0].clientY - pdpTouchStartY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) pdpIsSwiping = true;
+}, { passive: true });
+pdpMainEl.addEventListener('touchend', e => {
+  if (!pdpIsSwiping || pdpImages.length < 2) return;
+  const dx = e.changedTouches[0].clientX - pdpTouchStartX;
+  if (dx < -40) pdpSetImg(pdpCurrentIndex + 1);
+  else if (dx > 40) pdpSetImg(pdpCurrentIndex - 1);
+  pdpIsSwiping = false;
+}, { passive: true });
+
+
+// ── LEGAL PAGES ──
+const legalPages = {
+  privacy: {
+    title: 'Privacy Policy',
+    body: `<p class="legal-date">Last updated: May 2025</p>
+<p>Evolove Jewellery is operated by Viktoryia Salim, Amsterdam, Netherlands. We are committed to protecting your personal data in accordance with the GDPR.</p>
+<h2>1. Who we are</h2>
+<p>Controller: Viktoryia Salim, trading as Evolove Jewellery, Amsterdam, Netherlands.<br>Contact: <a href="mailto:+31 616 144 325" style="color:var(--gold)">+31 616 144 325</a></p>
+<h2>2. What data we collect</h2>
+<p>When you place an order we collect your name, email address, phone number and delivery address, submitted via our order form and sent via WhatsApp.</p>
+<h2>3. Why we collect it</h2>
+<p>Solely to process and fulfil your order and arrange delivery. We do not use your data for marketing without explicit consent.</p>
+<h2>4. Legal basis</h2>
+<p>Contractual necessity (Article 6(1)(b) GDPR).</p>
+<h2>5. Data sharing</h2>
+<p>We do not sell or share your personal data, except with PostNL or other couriers as required to deliver your order.</p>
+<h2>6. Data retention</h2>
+<p>Order data is retained for up to 3 years for legal and accounting purposes.</p>
+<h2>7. Your rights</h2>
+<p>Under GDPR you have the right to access, correct, delete, or port your data. Contact us at the email above to exercise these rights.</p>
+<h2>8. Contact</h2>
+<p><a href="mailto:+31 616 144 325" style="color:var(--gold)">+31 616 144 325</a></p>`
+  },
+  cookies: {
+    title: 'Cookie Policy',
+    body: `<p class="legal-date">Last updated: May 2025</p>
+<p>This policy explains how Evolove Jewellery uses cookies.</p>
+<h2>What are cookies?</h2>
+<p>Small text files stored on your device that help the site function and remember preferences.</p>
+<h2>Cookies we use</h2>
+<p>We only use essential cookies:</p>
+<ul><li><strong>cookie_consent</strong> — remembers your cookie preference. Duration: 1 year.</li></ul>
+<p>We do not use analytics, advertising, or any third-party tracking cookies.</p>
+<h2>Your choices</h2>
+<p>Accept or decline via the banner on your first visit. You can also clear cookies at any time via your browser settings.</p>
+<h2>Contact</h2>
+<p><a href="mailto:+31 616 144 325" style="color:var(--gold)">+31 616 144 325</a></p>`
+  },
+  terms: {
+    title: 'Terms & Conditions',
+    body: `<p class="legal-date">Last updated: May 2025</p>
+<p>By using the Evolove Jewellery website and placing orders, you agree to these terms.</p>
+<h2>1. About us</h2>
+<p>Evolove Jewellery is operated by Viktoryia Salim, Amsterdam, Netherlands. All jewellery is handmade to order.</p>
+<h2>2. Orders & Payment</h2>
+<p>Full payment (100%) is required at the time of ordering. Orders are confirmed by us within 24 hours via WhatsApp or email.</p>
+<h2>3. Pricing</h2>
+<p>All prices are in Euros (€) and exclude shipping. Free shipping on orders of €250 or more (Netherlands and Europe).</p>
+<h2>4. Production & Delivery</h2>
+<p>Production time: 1–3 business days (in stock) or 7–14 business days (material sourcing required). Shipping: Netherlands €4.40 via PostNL, Europe €12–16, worldwide available.</p>
+<h2>5. Custom Orders</h2>
+<p>Two types: (1) Modifications to existing design — 30–50% above standard price. (2) Fully bespoke pieces — price calculated individually based on materials and production time.</p>
+<h2>6. Returns</h2>
+<p>14 days from delivery for ready-made items in original condition. Return shipping is paid by the customer. Custom pieces are non-refundable unless defective.</p>
+<h2>7. Intellectual Property</h2>
+<p>All designs, images and content are the property of Evolove Jewellery and may not be reproduced without written permission.</p>
+<h2>8. Governing Law</h2>
+<p>These terms are governed by Dutch law.</p>
+<h2>9. Contact</h2>
+<p><a href="mailto:+31 616 144 325" style="color:var(--gold)">+31 616 144 325</a> · WhatsApp: +31 616 144 325</p>`
+  },
+  shipping: {
+    title: 'Shipping Information',
+    body: `<h2>Production time</h2>
+<p>All pieces are handmade in Amsterdam. Please allow:</p>
+<ul><li><strong>1–3 business days</strong> — materials in stock</li><li><strong>7–14 business days</strong> — special materials need sourcing</li></ul>
+<p>You will be notified via WhatsApp when your order ships.</p>
+<h2>Delivery options</h2>
+<ul><li><strong>Self pick-up</strong> in Amsterdam — free</li><li><strong>Standard shipping</strong> by post</li></ul>
+<h2>Shipping costs</h2>
+<ul><li><strong>Netherlands:</strong> €4.40 via PostNL</li><li><strong>Europe:</strong> €12–16</li><li><strong>Worldwide:</strong> available — cost on request</li></ul>
+<h2>Free shipping</h2>
+<p>Orders of <strong>€250 or more</strong> qualify for free shipping.</p>
+<h2>Questions?</h2>
+<p>WhatsApp: <a href="https://wa.me/31616144325" style="color:var(--gold)">+31 616 144 325</a></p>`
+  },
+  returns: {
+    title: 'Returns & Refunds',
+    body: `<h2>Return window</h2>
+<p>Return any ready-made item within <strong>14 days of delivery</strong>. Items must be unworn, undamaged, and in original condition.</p>
+<h2>How to return</h2>
+<p>Contact us via WhatsApp or email within 14 days of receiving your order. We will confirm the return address and next steps.</p>
+<h2>Return shipping</h2>
+<p>Return shipping costs are paid by the customer. We recommend using a tracked service.</p>
+<h2>Refunds</h2>
+<p>Once we receive and inspect the item, your refund is processed within 5 business days to the original payment method.</p>
+<h2>Non-returnable items</h2>
+<p>Custom-made pieces are non-refundable unless defective. If your item arrives defective, contact us immediately with photos.</p>
+<h2>Contact</h2>
+<p>WhatsApp: <a href="https://wa.me/31616144325" style="color:var(--gold)">+31 616 144 325</a></p>`
+  },
+  care: {
+    title: 'Jewellery Care',
+    body: `<h2>Caring for your Evolove piece</h2>
+<p>Each piece is handmade with natural stones and gold-plated or rhodium-plated metal. With care, it will stay beautiful for years.</p>
+<h2>General tips</h2>
+<ul>
+<li>Remove before swimming, showering, or bathing</li>
+<li>Avoid contact with perfume, hairspray, or lotions</li>
+<li>Remove before exercise or strenuous activity</li>
+<li>Put jewellery on last, take it off first</li>
+</ul>
+<h2>Storage</h2>
+<ul>
+<li>Store in a dry place away from sunlight</li>
+<li>Keep pieces separate to avoid scratching — use the pouch provided</li>
+</ul>
+<h2>Cleaning</h2>
+<ul>
+<li>Wipe gently with a soft dry cloth after wearing</li>
+<li>For deeper cleaning, use a cloth lightly dampened with water — never chemicals</li>
+</ul>
+<h2>Natural stones</h2>
+<p>Slight colour and pattern variations are natural characteristics, not defects. Some stones are sensitive to chemicals, heat, or prolonged sunlight.</p>
+<h2>Plating</h2>
+<p>Gold and rhodium plating will naturally wear over time. Following the above care tips will significantly extend its life.</p>`
+  }
+};
+
+function openLegal(page) {
+  const data = legalPages[page];
+  if (!data) return;
+  document.getElementById('legalModalTitle').textContent = data.title;
+  document.getElementById('legalModalBody').innerHTML = data.body;
+  document.getElementById('legalOverlay').classList.add('open');
+  document.getElementById('legalModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLegal() {
+  document.getElementById('legalOverlay').classList.remove('open');
+  document.getElementById('legalModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── COOKIE BANNER ──
+function initCookies() {
+  if (!localStorage.getItem('cookie_consent')) {
+    setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1500);
+  }
+}
+function acceptCookies() {
+  localStorage.setItem('cookie_consent', 'accepted');
+  document.getElementById('cookieBanner').classList.remove('show');
+}
+function declineCookies() {
+  localStorage.setItem('cookie_consent', 'declined');
+  document.getElementById('cookieBanner').classList.remove('show');
+}
+
+// ── INIT ──
+renderProducts();
+initCookies();
+</script>
+</body>
+</html>
