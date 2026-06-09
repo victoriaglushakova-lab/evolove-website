@@ -1116,7 +1116,49 @@ footer {
   .product-card:hover .img-second { opacity: 1; }
 }
 
-/* ── ANIMATIONS ── */
+/* ── SEARCH BAR ── */
+.search-bar-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.product-search {
+  width: 280px;
+  padding: 9px 36px 9px 16px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--border-strong);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--charcoal);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.product-search:focus { border-color: var(--gold); }
+.product-search::placeholder { color: var(--muted); }
+.search-clear {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1;
+  padding: 0;
+  transition: color var(--transition);
+}
+.search-clear:hover { color: var(--charcoal); }
+.search-results-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* ── SEARCH BAR ── */
 @keyframes heroZoom {
   from { transform: scale(1.04); }
   to   { transform: scale(1); }
@@ -1146,7 +1188,8 @@ footer {
   .section { padding: 60px 0; }
   .section-inner { padding: 0; }
   .section-header { padding: 0 16px; margin-bottom: 32px; }
-  .filters { padding: 0 16px; }
+  .search-bar-wrap { width: 100%; }
+  .product-search { width: 100%; }
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; }
   .product-name { font-size: 16px; }
   .product-state { font-size: 11px; }
@@ -1228,13 +1271,19 @@ footer {
         <p class="section-eyebrow">The collection</p>
         <h2 class="section-title">All <em>pieces</em></h2>
       </div>
-      <div class="filters" id="categoryFilters">
-        <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
-        <button class="filter-btn" onclick="filterCategory('necklace', this)">Necklaces</button>
-        <button class="filter-btn" onclick="filterCategory('choker', this)">Chokers</button>
-        <button class="filter-btn" onclick="filterCategory('bracelet', this)">Bracelets</button>
-        <button class="filter-btn" onclick="filterCategory('earrings', this)">Earrings</button>
-        <button class="filter-btn" onclick="filterCategory('ring', this)">Rings</button>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:16px">
+        <div class="search-bar-wrap">
+          <input type="text" id="productSearch" class="product-search" placeholder="Search by name, e.g. Dolce Vita..." oninput="handleSearch(this.value)" autocomplete="off">
+          <button class="search-clear" id="searchClear" onclick="clearSearch()" style="display:none">×</button>
+        </div>
+        <div class="filters" id="categoryFilters">
+          <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
+          <button class="filter-btn" onclick="filterCategory('necklace', this)">Necklaces</button>
+          <button class="filter-btn" onclick="filterCategory('choker', this)">Chokers</button>
+          <button class="filter-btn" onclick="filterCategory('bracelet', this)">Bracelets</button>
+          <button class="filter-btn" onclick="filterCategory('earrings', this)">Earrings</button>
+          <button class="filter-btn" onclick="filterCategory('ring', this)">Rings</button>
+        </div>
       </div>
     </div>
     <div class="product-grid" id="productGrid"></div>
@@ -1620,6 +1669,7 @@ const products = [
 let cart = [];
 let currentFilter = 'all';
 let currentElement = null;
+let currentSearch = '';
 
 
 // Product images
@@ -1687,15 +1737,17 @@ const productImages = {
 function renderProducts() {
   const grid = document.getElementById('productGrid');
   let filtered = products;
-  if (currentElement) {
-    filtered = products.filter(p => p.element === currentElement);
-  } else if (currentFilter !== 'all') {
-    filtered = products.filter(p => p.type === currentFilter);
-  }
 
-  // Only show products with images for MVP
   const idsWithImages = new Set([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,46,47,48,53,54,55,56,57,58,59,60,61,62,63]);
   filtered = filtered.filter(p => idsWithImages.has(p.id));
+
+  if (currentSearch) {
+    filtered = filtered.filter(p => p.name.toLowerCase().includes(currentSearch));
+  } else if (currentElement) {
+    filtered = filtered.filter(p => p.element === currentElement);
+  } else if (currentFilter !== 'all') {
+    filtered = filtered.filter(p => p.type === currentFilter);
+  }
 
   // Sort: group by name, within group show choker/necklace before earrings
   const typePriority = { choker: 1, necklace: 1, bracelet: 2, earrings: 3 };
@@ -1704,7 +1756,12 @@ function renderProducts() {
     return (typePriority[a.type] || 9) - (typePriority[b.type] || 9);
   });
 
-  grid.innerHTML = filtered.map(p => `
+  // results label
+  const label = currentSearch
+    ? `<p class="search-results-label" style="grid-column:1/-1;padding:0 4px 8px">${filtered.length} piece${filtered.length !== 1 ? 's' : ''} found for "${currentSearch}"</p>`
+    : '';
+
+  grid.innerHTML = label + filtered.map(p => `
     <div class="product-card" onclick="openPDP(${p.id})">
       <div class="product-img">
         ${productImages[p.id]
@@ -2147,7 +2204,55 @@ function declineCookies() {
   document.getElementById('cookieBanner').classList.remove('show');
 }
 
+// ── SEARCH ──
+
+function handleSearch(val) {
+  currentSearch = val.trim().toLowerCase();
+  document.getElementById('searchClear').style.display = currentSearch ? 'block' : 'none';
+  // reset category filter when searching
+  if (currentSearch) {
+    currentFilter = 'all';
+    currentElement = null;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.filter-btn').classList.add('active');
+  }
+  renderProducts();
+  // update URL
+  try {
+    const url = new URL(window.location);
+    if (currentSearch) {
+      url.searchParams.set('search', currentSearch);
+    } else {
+      url.searchParams.delete('search');
+    }
+    window.history.replaceState({}, '', url);
+  } catch(e) {}
+}
+
+function clearSearch() {
+  document.getElementById('productSearch').value = '';
+  handleSearch('');
+}
+
 // ── INIT ──
+// Check for search param in URL
+try {
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchParam = urlParams.get('search');
+  if (searchParam) {
+    currentSearch = searchParam.toLowerCase();
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('productSearch');
+      if (input) {
+        input.value = searchParam;
+        document.getElementById('searchClear').style.display = 'block';
+      }
+    });
+    window.addEventListener('load', () => {
+      document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+} catch(e) {}
 renderProducts();
 initCookies();
 </script>
