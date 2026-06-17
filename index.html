@@ -1616,6 +1616,7 @@ const products = [
   { id:48, name:"I Am... Steady",      type:"choker",    element:"earth", price:30,  materials:"Green Ghost Quartz, rhodium-plated metal",                               state:"Inner steadiness · Calm · Balance" },
   { id:44, name:"Pink Cloud",          type:"choker",    element:"water", price:65,  materials:"Pink Cat Eye, Kunzite, Moonstone, freshwater pearls, baroque pearl, rhodium-plated", state:"Tenderness · Emotional ease · Self-love" },
   { id:45, name:"Pink Cloud",          type:"earrings",  element:"water", price:20,  materials:"Pink Cat Eye, Moonstone, freshwater pearls, rhodium-plated metal",       state:"Tenderness · Emotional ease · Self-love" },
+  { id:66, name:"Pink Cloud",          type:"bracelet",  element:"water", price:30,  materials:"Pink Cat Eye, Moonstone, freshwater pearls, rhodium-plated metal",       state:"Tenderness · Emotional ease · Self-love · Comfort" },
   { id:43, name:"Inner Harmony",       type:"bracelet",  element:"earth", price:40,  materials:"Kiwi Jasper, Peach Moonstone, baroque pearls, rhodium-plated metal",     state:"Emotional balance · Inner harmony · Gentle stability" },
   { id:26, name:"Sky of Love",         type:"bracelet",  element:"water", price:40,  materials:"Aquamarine, rhodium-plated metal",                                       state:"Tenderness · Emotional safety · Self-love" },
   { id:39, name:"I Am... Limitless",   type:"earrings",  element:"air",   price:25,  materials:"Gold-plated metal",                                                      state:"Clarity · Perspective · Expansion" },
@@ -1718,6 +1719,9 @@ const productImages = {
   53: ["images/40b-i-am-limitless-choker-2/1.JPG", "images/40b-i-am-limitless-choker-2/2.JPG", "images/40b-i-am-limitless-choker-2/3.JPG", "images/40b-i-am-limitless-choker-2/4.JPG"],
   41: ["images/41-i-am-limitless-necklace/1.JPG", "images/41-i-am-limitless-necklace/2.JPG", "images/41-i-am-limitless-necklace/3.JPG", "images/41-i-am-limitless-necklace/4.JPG", "images/41-i-am-limitless-necklace/5.JPG"],
   43: ["images/43-inner-harmony-bracelet/1.JPG", "images/43-inner-harmony-bracelet/2.JPG"],
+  44: ["images/44-pink-cloud-choker/1.JPG", "images/44-pink-cloud-choker/2.JPG", "images/44-pink-cloud-choker/3.JPG", "images/44-pink-cloud-choker/4.JPG", "images/44-pink-cloud-choker/5.JPG"],
+  45: ["images/45-pink-cloud-earrings/1.JPG", "images/45-pink-cloud-earrings/2.JPG", "images/45-pink-cloud-earrings/3.JPG", "images/45-pink-cloud-earrings/4.JPG"],
+  66: ["images/66-pink-cloud-bracelet/1.JPG", "images/66-pink-cloud-bracelet/2.JPG", "images/66-pink-cloud-bracelet/3.JPG"],
   54: ["images/54-candy-necklace-choker/1.jpeg", "images/54-candy-necklace-choker/2.JPG", "images/54-candy-necklace-choker/3.JPG", "images/54-candy-necklace-choker/4.JPG"],
   55: ["images/55-sugar-drops-earrings/1.JPG", "images/55-sugar-drops-earrings/2.jpeg", "images/55-sugar-drops-earrings/3.JPG"],
   56: ["images/56-dolce-vita-choker/1.JPG", "images/56-dolce-vita-choker/2.JPG", "images/56-dolce-vita-choker/3.JPG"],
@@ -1738,7 +1742,7 @@ function renderProducts() {
   const grid = document.getElementById('productGrid');
   let filtered = products;
 
-  const idsWithImages = new Set([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,46,47,48,53,54,55,56,57,58,59,60,61,62,63]);
+  const idsWithImages = new Set([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,53,54,55,56,57,58,59,60,61,62,63,66]);
   filtered = filtered.filter(p => idsWithImages.has(p.id));
 
   if (currentSearch) {
@@ -2011,12 +2015,26 @@ function openPDP(id) {
   document.getElementById('pdpOverlay').classList.add('open');
   document.getElementById('pdpModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // update URL for shareable link
+  try {
+    const url = new URL(window.location);
+    url.searchParams.set('product', id);
+    window.history.pushState({ productId: id }, '', url);
+  } catch(e) {}
 }
 
 function closePDP() {
   document.getElementById('pdpOverlay').classList.remove('open');
   document.getElementById('pdpModal').classList.remove('open');
   document.body.style.overflow = '';
+
+  // remove product param from URL
+  try {
+    const url = new URL(window.location);
+    url.searchParams.delete('product');
+    window.history.pushState({}, '', url);
+  } catch(e) {}
 }
 
 function pdpSetImg(index) {
@@ -2253,6 +2271,31 @@ try {
     });
   }
 } catch(e) {}
+
+// Check for product param in URL (direct PDP link)
+try {
+  const urlParams2 = new URLSearchParams(window.location.search);
+  const productParam = urlParams2.get('product');
+  if (productParam) {
+    window.addEventListener('load', () => {
+      openPDP(parseInt(productParam, 10));
+    });
+  }
+} catch(e) {}
+
+// Handle browser back/forward for PDP
+window.addEventListener('popstate', () => {
+  try {
+    const urlParams3 = new URLSearchParams(window.location.search);
+    const pid = urlParams3.get('product');
+    if (pid) {
+      openPDP(parseInt(pid, 10));
+    } else {
+      closePDP();
+    }
+  } catch(e) {}
+});
+
 renderProducts();
 initCookies();
 </script>
