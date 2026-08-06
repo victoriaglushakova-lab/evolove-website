@@ -1942,10 +1942,10 @@ function submitOrder(e) {
   modal.innerHTML = `
     <div class="success-modal">
       <span class="success-icon">✦</span>
-      <h2 class="success-title">Order received</h2>
+      <h2 class="success-title">Request received</h2>
       <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Your reference number</p>
       <div class="success-ref">${ref}</div>
-      <p class="success-desc">Thank you, ${firstName}. I'll reach out to you personally within 24 hours to confirm your order and arrange everything.</p>
+      <p class="success-desc">Thank you, ${firstName}. I'll confirm availability and calculate shipping for your address, then send you a secure payment link within 24 hours to complete your order.</p>
       <p style="font-size:13px;color:var(--muted);font-style:italic;font-family:var(--font-display);margin-bottom:32px">— Victoria</p>
       <button class="btn-primary" onclick="closeOrderModal();cart=[];updateCartUI();">Continue browsing</button>
     </div>
