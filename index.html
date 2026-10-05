@@ -1608,7 +1608,6 @@ const products = [
   { id:56, name:"Dolce Vita",         type:"choker",    element:"fire",  price:40,  materials:"Dalmatian jasper, ceramic heart bead, gold-plated metal",                 state:"Joyful femininity · Playfulness · Confidence · Pleasure" },
   { id:57, name:"Dolce Vita",         type:"bracelet",  element:"fire",  price:30,  materials:"Dalmatian jasper, ceramic heart bead, gold-plated metal",                 state:"Playful confidence · Warmth · Freedom · Lighthearted joy" },
   { id:58, name:"Dolce Vita",         type:"earrings",  element:"fire",  price:20,  materials:"Dalmatian jasper, gold-plated metal",                                     state:"Playful boldness · Individuality · Joyful expression" },
-  { id:54, name:"Candy Necklace",     type:"choker",    element:"water", price:30,  materials:"Chalcedony, gold-plated metal",                                           state:"Joy · Playfulness · Nostalgia" },
   { id:55, name:"Sugar Drops",        type:"earrings",  element:"water", price:22,  materials:"Rose quartz, gold-plated metal",                                          state:"Lightness · Feminine warmth · Playful elegance" },
   { id:49, name:"Pure Love",           type:"choker",    element:"water", price:55,  materials:"Freshwater pearls, mother-of-pearl, gold-plated & rhodium-plated metal", state:"Grace · Elegance · Love · Tenderness" },
   { id:50, name:"Pure Love",           type:"bracelet",  element:"water", price:40,  materials:"Freshwater pearls, mother-of-pearl, gold-plated & rhodium-plated metal", state:"Grace · Elegance · Love · Tenderness" },
@@ -1631,11 +1630,8 @@ const products = [
   { id:7,  name:"Cool Confidence",     type:"choker",    element:"air",   price:50,  materials:"Aqua quartz, hematine, rhodium-plated metal",                            state:"Calm confidence · Mental clarity · Quiet power" },
   { id:8,  name:"11:11",               type:"bracelet",  element:"air",   price:40,  materials:"Morganite, Blue Chalcedony, gold-plated metal, enamel pendant",          state:"Alignment · Trust · Feeling guided" },
   { id:9,  name:"Soul Wings",          type:"choker",    element:"air",   price:60,  materials:"Freshwater Pearls, gold-plated",                                         state:"Femininity · Self-love · Grace" },
-  { id:10, name:"Soul Wings",          type:"bracelet",  element:"air",   price:35,  materials:"Freshwater Pearls, gold-plated",                                         state:"Femininity · Self-love · Grace" },
+  { id:10, name:"Soul Wings",          type:"bracelet",  element:"air",   price:40,  materials:"Freshwater Pearls, gold-plated",                                         state:"Femininity · Self-love · Grace" },
   { id:11, name:"Gentle Balance",      type:"choker",    element:"water", price:65,  materials:"Agate, gold-plated",                                                     state:"Tenderness · Emotional balance · Self-love" },
-  { id:12, name:"Gentle Balance",      type:"earrings",  element:"water", price:22,  materials:"Agate, gold-plated metal",                                               state:"Tenderness · Emotional balance · Feminine calm" },
-  { id:13, name:"Soft Light",          type:"choker",    element:"water", price:50,  materials:"Aquamarine, freshwater pearls, mother-of-pearl pendant, rhodium-plated metal", state:"Inner calm · Emotional harmony · Gentle presence" },
-  { id:14, name:"Soft Light",          type:"earrings",  element:"water", price:22,  materials:"Aquamarine, freshwater pearls, rhodium-plated metal",                    state:"Inner calm · Emotional harmony · Gentle presence" },
   { id:15, name:"Light as a Feather",  type:"necklace",  element:"air",   price:65,  materials:"Freshwater pearls, mother-of-pearl pendant, rhodium-plated metal",       state:"Lightness · Freedom · Effortless elegance" },
   { id:16, name:"Light as a Feather",  type:"earrings",  element:"air",   price:30,  materials:"Freshwater pearls, mother-of-pearl pendant, rhodium-plated metal",       state:"Lightness · Freedom · Effortless elegance" },
   { id:17, name:"Moon Garden",         type:"choker",    element:"water", price:60,  materials:"Moonstone, freshwater pearls, dendritic agate, rhodium-plated metal",    state:"Intuition · Inner harmony · Natural flow" },
@@ -1662,7 +1658,6 @@ const products = [
   // ── OCEAN (bottom) ──
   { id:2,  name:"Ocean",               type:"choker",    element:"water", price:60,  materials:"Sodalite, Terahertz, Hematin, rhodium-plated metal",                     state:"Inner calm · Clarity · Intuitive flow" },
   { id:3,  name:"Ocean",               type:"earrings",  element:"water", price:22,  materials:"Sodalite, rhodium-plated metal",                                         state:"Inner calm · Clarity · Freedom" },
-  { id:4,  name:"Ocean 2.0",           type:"choker",    element:"water", price:80,  materials:"Aqua quartz, crystal quartz, rhodium-plated metal",                      state:"Inner calm · Freedom · Openness" },
   { id:42, name:"Ocean Drops",         type:"necklace",  element:"water", price:70,  materials:"Crystal quartz, baroque pearl, rhodium-plated metal",                    state:"Fluidity · Feminine radiance · Lightness · Clarity" },
   { id:5,  name:"Ice",                 type:"earrings",  element:"water", price:22,  materials:"Aqua quartz, rhodium-plated metal",                                      state:"Inner calm · Clarity · Openness" },
   { id:6,  name:"Melting Ice",         type:"necklace",  element:"water", price:78,  materials:"Aqua quartz, rhodium-plated metal",                                      state:"Emotional release · Softness · Flow" },
@@ -1744,7 +1739,7 @@ function renderProducts() {
   const grid = document.getElementById('productGrid');
   let filtered = products;
 
-  const idsWithImages = new Set([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,53,54,55,56,57,58,59,60,61,62,63,66]);
+  const idsWithImages = new Set([0,1,2,3,5,6,7,8,9,10,11,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,53,55,56,57,58,59,60,61,62,63,66]);
   filtered = filtered.filter(p => idsWithImages.has(p.id));
 
   if (currentSearch) {
@@ -1771,8 +1766,8 @@ function renderProducts() {
     <div class="product-card" onclick="openPDP(${p.id})">
       <div class="product-img">
         ${productImages[p.id]
-          ? `<img src="${productImages[p.id][0]}" style="width:100%;height:100%;object-fit:cover;object-position:center top;" alt="${p.name}">
-             ${productImages[p.id][1] ? `<img src="${productImages[p.id][1]}" class="img-second" alt="${p.name}">` : ''}`
+          ? `<img src="${productImages[p.id][0]}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;" alt="${p.name}">
+             ${productImages[p.id][1] ? `<img src="${productImages[p.id][1]}" loading="lazy" class="img-second" alt="${p.name}">` : ''}`
           : `<span class="product-img-placeholder">${p.name[0]}</span>`
         }
 
@@ -2004,7 +1999,7 @@ function openPDP(id) {
     photo.style.display = 'block';
     thumbsEl.innerHTML = pdpImages.map((src, i) =>
       `<div class="pdp-thumb ${i === 0 ? 'active' : ''}" onclick="pdpSetImg(${i})">
-        <img src="${src}" alt="">
+        <img src="${src}" loading="lazy" alt="">
       </div>`
     ).join('');
     thumbsEl.style.display = pdpImages.length > 1 ? 'flex' : 'none';
