@@ -277,9 +277,43 @@ nav {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition);
+  z-index: 1;
 }
 .element-card:hover::before { transform: scaleX(1); }
-.element-card:hover { background: var(--warm-white); }
+.element-card:hover { filter: brightness(0.97); }
+
+/* Fire — deep terracotta burn */
+.element-card[data-el="fire"] {
+  background:
+    radial-gradient(ellipse at 85% 10%, rgba(196,80,42,0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 85%, rgba(184,151,90,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 50%, rgba(210,100,40,0.20) 0%, transparent 65%),
+    var(--warm-white);
+}
+/* Water — deep ocean blue */
+.element-card[data-el="water"] {
+  background:
+    radial-gradient(ellipse at 80% 15%, rgba(58,110,143,0.40) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 80%, rgba(80,140,180,0.28) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(40,90,130,0.15) 0%, transparent 65%),
+    var(--warm-white);
+}
+/* Air — silvery blue mist */
+.element-card[data-el="air"] {
+  background:
+    radial-gradient(ellipse at 75% 15%, rgba(122,143,166,0.38) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(160,180,205,0.28) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(100,120,150,0.14) 0%, transparent 65%),
+    var(--warm-white);
+}
+/* Earth — rich moss and amber */
+.element-card[data-el="earth"] {
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(107,94,66,0.40) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(140,120,75,0.30) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(90,75,50,0.15) 0%, transparent 65%),
+    var(--warm-white);
+}
 
 .element-card[data-el="fire"]::before { background: var(--fire); }
 .element-card[data-el="water"]::before { background: var(--water); }
@@ -288,11 +322,8 @@ nav {
 
 .element-symbol {
   font-family: var(--font-display);
-  font-size: 28px;
-  font-style: italic;
-  font-weight: 300;
-  margin-bottom: 12px;
-  display: block;
+  font-size: 28px; font-style: italic; font-weight: 300;
+  margin-bottom: 12px; display: block; position: relative; z-index: 1;
 }
 .element-card[data-el="fire"] .element-symbol { color: var(--fire); }
 .element-card[data-el="water"] .element-symbol { color: var(--water); }
@@ -302,9 +333,9 @@ nav {
 .element-name {
   font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--charcoal);
-  margin-bottom: 8px;
+  margin-bottom: 8px; position: relative; z-index: 1;
 }
-.element-desc { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+.element-desc { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.5; position: relative; z-index: 1; }
 
 /* ── SECTION HEADERS ── */
 .section { padding: 80px 40px; }
@@ -1246,7 +1277,11 @@ footer {
 </section>
 
 <!-- ELEMENTS STRIP -->
-<div class="elements-strip">
+<div style="padding: 40px 40px 24px; border-top: 0.5px solid var(--border);">
+  <p style="font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Shop by element</p>
+  <h2 style="font-family:var(--font-display);font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--charcoal);line-height:1.1">Find your <em style="font-style:italic;color:var(--gold)">desired state</em></h2>
+</div>
+<div class="elements-strip" style="border-top:none">
   <div class="element-card" data-el="fire" onclick="filterByElement('fire')">
     <span class="element-symbol">Fire</span>
     <p class="element-desc">Confidence, passion, bold presence</p>
